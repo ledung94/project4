@@ -26,10 +26,10 @@ function sendContact()
 			type: "POST",	
 			data: data,	
 			contentType : "application/json",
-			url: "http://localhost:8080/laptopshop/createContact",
+			url: "http://localhost:8080/mobileshop/createContact",
 			success: function(result){
 				alert("Cảm ơn quý khách đã liên hệ với chúng tôi. Laptop shop sẽ phản hồi sớm cho các bạn");
-				window.location.href = "/laptopshop/contact";
+				window.location.href = "/mobileshop/contact";
 			},
 			error : function(e){
 				alert("Error: ",e);

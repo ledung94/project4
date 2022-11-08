@@ -9,7 +9,7 @@ $(document).ready(function() {
 			type: "GET",		
 			data: data,
 			contentType : "application/json",
-			url: "http://localhost:8080/laptopshop/api/lien-he/all" + '?page=' + page,
+			url: "http://localhost:8080/mobileshop/api/lien-he/all" + '?page=' + page,
 			success: function(result){
 				$.each(result.content, function(i, lienHe){
 					var lienHeRow = '<tr>' +
@@ -81,7 +81,7 @@ $(document).ready(function() {
 	$(document).on('click', '.btnChiTiet', function (event){
 		event.preventDefault();
 		var lienHeId =  $(this).parent().prev().children().val();
-		var href = "http://localhost:8080/laptopshop/api/lien-he/"+lienHeId;
+		var href = "http://localhost:8080/mobileshop/api/lien-he/"+lienHeId;
 		$.get(href, function(lienHe) {
 			$('#noiDungLienHe').html("<strong>Nội dung liên hệ</strong>: <br> "+ lienHe.noiDungLienHe);
 			$('#ngayLienHe').html("<strong>Ngày liên hệ</strong>: "+ lienHe.ngayLienHe);
@@ -102,7 +102,7 @@ $(document).ready(function() {
 	$(document).on('click', '.btnTraLoi', function (event){
 		event.preventDefault();
 		var lienHeId =  $(this).parent().prev().children().val();
-		var href = "http://localhost:8080/laptopshop/api/lien-he/"+lienHeId;
+		var href = "http://localhost:8080/mobileshop/api/lien-he/"+lienHeId;
 		$.get(href, function(lienHe) {
 			$('#ndLienHe').val(lienHe.noiDungLienHe);
 			$('#emailLienHe').val(lienHe.emailLienHe);

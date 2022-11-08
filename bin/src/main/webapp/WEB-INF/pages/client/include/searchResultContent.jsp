@@ -45,7 +45,7 @@
          				<c:if test = "${loop.index%4 == 0}">
          					<div class="section group">
          					<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id=${sanpham.id}">
-									<img src="/laptopshop/img/${sanpham.id}.png">
+									<img src="/mobileshop/img/${sanpham.id}.png">
 									<h3>${sanpham.tenSanPham}</h3>
 									<h4>${sanpham.donGia}</h4></a>
 							</div>
@@ -53,7 +53,7 @@
          				<c:if test = "${loop.index%4 != 0}">
          					<c:if test = "${loop.index%4 == 3}">
          						<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id=${sanpham.id}">
-									<img src="/laptopshop/img/${sanpham.id}.png">
+									<img src="/mobileshop/img/${sanpham.id}.png">
 									<h3>${sanpham.tenSanPham}</h3>
 									<h4>${sanpham.donGia}</h4></a>
 								</div>
@@ -61,7 +61,7 @@
 							</c:if>
 							<c:if test = "${loop.index%4 != 3}">
 								<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id=${sanpham.id}">
-									<img src="/laptopshop/img/${sanpham.id}.png">
+									<img src="/mobileshop/img/${sanpham.id}.png">
 									<h3>${sanpham.tenSanPham}</h3>
 									<h4>${sanpham.donGia}</h4></a>
 								</div>
@@ -72,7 +72,7 @@
      					<c:if test = "${loop.index%4 == 0}">
      						<div class="section group">
          					<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id=${sanpham.id}">
-									<img src="/laptopshop/img/${sanpham.id}.png">
+									<img src="/mobileshop/img/${sanpham.id}.png">
 									<h3>${sanpham.tenSanPham}</h3>
 									<h4>${sanpham.donGia}</h4></a>
 							</div>
@@ -80,7 +80,7 @@
      					</c:if>
      					<c:if test = "${loop.index%4 != 0}">
      						<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id=${sanpham.id}">
-									<img src="/laptopshop/img/${sanpham.id}.png">
+									<img src="/mobileshop/img/${sanpham.id}.png">
 									<h3>${sanpham.tenSanPham}</h3>
 									<h4>${sanpham.donGia}</h4></a>
 							</div>
@@ -91,13 +91,13 @@
 		    	<c:if test = "${list.size() != 0}">
 		    		<div class="paging">
             		<c:if test = "${currentPage != 1}">
-                		<a href="/laptopshop/search?name=${name}&page=${currentPage-1}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">Back</a>
+                		<a href="/mobileshop/search?name=${name}&page=${currentPage-1}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">Back</a>
                 	</c:if>
                 	<c:if test = "${currentPage == 1}">	
         				<a class="current">1</a>
         			</c:if>
         			<c:if test = "${currentPage != 1}">	
-        				<a href="/laptopshop/search?name=${name}&page=1&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">1</a>
+        				<a href="/mobileshop/search?name=${name}&page=1&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">1</a>
         			</c:if>
         			
         			<c:forEach var="pag" items="${pageList}" varStatus="loop">
@@ -105,12 +105,12 @@
         					<a class="current">${pag}</a>
         				</c:if>
         				<c:if test = "${currentPage != pag}">	
-        					<a href="/laptopshop/search?name=${name}&page=${pag}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">${pag}</a>
+        					<a href="/mobileshop/search?name=${name}&page=${pag}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">${pag}</a>
         				</c:if>
       				</c:forEach>
 
             		<c:if test = "${currentPage != totalPage}">
-                		<a href="/laptopshop/search?name=${name}&page=${currentPage+1}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">Next</a>	
+                		<a href="/mobileshop/search?name=${name}&page=${currentPage+1}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">Next</a>	
                 	</c:if>
                 	
             

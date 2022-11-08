@@ -2,7 +2,7 @@ function addToCart(id)
 	{
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/laptopshop/api/gio-hang/addSanPham?id="+id,
+			url: "http://localhost:8080/mobileshop/api/gio-hang/addSanPham?id="+id,
 			success: function(result){
 				if(result.status == "false")
 				{

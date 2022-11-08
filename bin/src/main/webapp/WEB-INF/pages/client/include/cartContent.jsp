@@ -35,7 +35,7 @@ html
 		
 		<div>
 		<td>${loop.index+1}</td>
-		<td><img src="/laptopshop/img/${sanpham.id}.png" style="width: 150px" class="cart-img"></td>
+		<td><img src="/mobileshop/img/${sanpham.id}.png" style="width: 150px" class="cart-img"></td>
 		<td>
 			<p class="cart_ten"><a href="#">${sanpham.tenSanPham}</a></p>
 			<p class="cart_masanpham">Mã sản phẩm : <span>${sanpham.id}</span></p>
@@ -64,7 +64,8 @@ html
 			<p class="cart_tongdonhang">Tổng giá trị đơn hàng : <span id="ordertotal"></span> VND</p>
 
 		</td>
-</tr>
+</tr>
+
 </table>
   
 </div>  

@@ -38,10 +38,10 @@ function changeInformation()
 			type: "POST",	
 			data: data,	
 			contentType : "application/json",
-			url: "http://localhost:8080/laptopshop/updateInfo",
+			url: "http://localhost:8080/mobileshop/updateInfo",
 			success: function(result){
 				alert("Thông tin đã cập nhật");
-				window.location.href = "/laptopshop/account";
+				window.location.href = "/mobileshop/account";
 			},
 			error : function(e){
 				alert("Error: ",e);

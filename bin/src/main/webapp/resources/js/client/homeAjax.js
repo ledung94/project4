@@ -4,7 +4,7 @@ $(document).ready(function(){
 	function ajaxGet(){
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/laptopshop/api/san-pham/latest",
+			url: "http://localhost:8080/mobileshop/api/san-pham/latest",
 			success: function(result){
 				var content;
 				var section = '<div class="section group">';
@@ -16,13 +16,13 @@ $(document).ready(function(){
 						{
 							content = '';
 							content = '<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id='+sanpham.id+'">' +
-									'<img src="/laptopshop/img/'+sanpham.id+'.png">' +
+									'<img src="/mobileshop/img/'+sanpham.id+'.png">' +
 									'<h3>'+sanpham.tenSanPham+'</h3>' +
 									'<h4>'+sanpham.donGia+'</h4></a></div>';
 						}else 
 						{
 							content = content+'<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id='+sanpham.id+'">' +
-									'<img src="/laptopshop/img/'+sanpham.id+'.png">' +
+									'<img src="/mobileshop/img/'+sanpham.id+'.png">' +
 									'<h3>'+sanpham.tenSanPham+'</h3>' +
 									'<h4>'+sanpham.donGia+'</h4></a></div>';
 							if(i%4==3)
@@ -37,7 +37,7 @@ $(document).ready(function(){
 						{
 							content = '';
 							content = '<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id='+sanpham.id+'">' +
-									'<img src="/laptopshop/img/'+sanpham.id+'.png">' +
+									'<img src="/mobileshop/img/'+sanpham.id+'.png">' +
 									'<h3>'+sanpham.tenSanPham+'</h3>' +
 									'<h4>'+sanpham.donGia+'</h4></a></div>';
 							content = section + content + endsection;
@@ -45,7 +45,7 @@ $(document).ready(function(){
 						}else
 						{
 							content = content+'<div class="grid_1_of_4 images_1_of_4 products-info"><a href="sp?id='+sanpham.id+'">' +
-									'<img src="/laptopshop/img/'+sanpham.id+'.png">' +
+									'<img src="/mobileshop/img/'+sanpham.id+'.png">' +
 									'<h3>'+sanpham.tenSanPham+'</h3>' +
 									'<h4>'+sanpham.donGia+'</h4></a></div>';
 							content = section + content + endsection;

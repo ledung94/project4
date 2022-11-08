@@ -12,11 +12,11 @@ $(document).ready(function() {
 			type: "GET",		
 			data: data,
 			contentType : "application/json",
-			url: "http://localhost:8080/laptopshop/api/san-pham/all" + '?page=' + page,
+			url: "http://localhost:8080/mobileshop/api/san-pham/all" + '?page=' + page,
 			success: function(result){
 				$.each(result.content, function(i, sanPham){
 					var sanPhamRow = '<tr>' +
-					                  '<td>' + '<img src="/laptopshop/img/'+sanPham.id+'.png" class="img-responsive" style="height: 50px; width: 50px" />'+'</td>' +
+					                  '<td>' + '<img src="/mobileshop/img/'+sanPham.id+'.png" class="img-responsive" style="height: 50px; width: 50px" />'+'</td>' +
 					                  '<td>' + sanPham.tenSanPham + '</td>' +
 					                  '<td>' + sanPham.danhMuc.tenDanhMuc + '</td>' +
 					                  '<td>' + sanPham.hangSanXuat.tenHangSanXuat + '</td>' +
@@ -113,7 +113,7 @@ $(document).ready(function() {
      		async:false,
  			type : "POST",
  			contentType : "application/json",
- 			url : "http://localhost:8080/laptopshop/api/san-pham/save",
+ 			url : "http://localhost:8080/mobileshop/api/san-pham/save",
  			enctype: 'multipart/form-data',
  			data : data,
  			
@@ -162,7 +162,7 @@ $(document).ready(function() {
      		async:false,
  			type : "POST",
  			contentType : "application/json",
- 			url : "http://localhost:8080/laptopshop/api/san-pham/save",
+ 			url : "http://localhost:8080/mobileshop/api/san-pham/save",
  			enctype: 'multipart/form-data',
  			data : data,
  			
@@ -204,7 +204,7 @@ $(document).ready(function() {
 		$('#lapTopForm').removeClass().addClass("updateLaptopForm");
 		$('#lapTopForm #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateLaptopForm");
 	
-		var href = "http://localhost:8080/laptopshop/api/san-pham/"+sanPhamId;
+		var href = "http://localhost:8080/mobileshop/api/san-pham/"+sanPhamId;
 		$.get(href, function(sanPham) {
 			populate('.updateLaptopForm', sanPham);
 			$("#idDanhMucLaptop").val(sanPham.danhMuc.id);
@@ -234,7 +234,7 @@ $(document).ready(function() {
  		async:false,
 			type : "POST",
 			contentType : "application/json",
-			url : "http://localhost:8080/laptopshop/api/san-pham/save",
+			url : "http://localhost:8080/mobileshop/api/san-pham/save",
 			enctype: 'multipart/form-data',
 			data : data,
 			
@@ -273,7 +273,7 @@ $(document).ready(function() {
 		$('#otherForm').removeClass().addClass("updateOtherForm");
 		$('#otherForm #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateOtherForm");
 	
-		var href = "http://localhost:8080/laptopshop/api/san-pham/"+sanPhamId;
+		var href = "http://localhost:8080/mobileshop/api/san-pham/"+sanPhamId;
 		$.get(href, function(sanPham) {
 			populate('.updateOtherForm', sanPham);
 			$("#idDanhMucKhac").val(sanPham.danhMuc.id);
@@ -300,7 +300,7 @@ $(document).ready(function() {
       		async:false,
   			type : "POST",
   			contentType : "application/json",
-  			url : "http://localhost:8080/laptopshop/api/san-pham/save",
+  			url : "http://localhost:8080/mobileshop/api/san-pham/save",
   			enctype: 'multipart/form-data',
   			data : data,
   			
@@ -345,7 +345,7 @@ $(document).ready(function() {
 		  $.ajax({
 			  async:false,
 			  type : "DELETE",
-			  url : "http://localhost:8080/laptopshop/api/san-pham/delete/" + sanPhamId,
+			  url : "http://localhost:8080/mobileshop/api/san-pham/delete/" + sanPhamId,
 			  success: function(resultMsg){
 				 alert("Xóa thành công");
 			  },

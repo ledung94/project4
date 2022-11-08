@@ -81,7 +81,7 @@
 				
 					 <tr style="text-align: center;">
 						    <td>
-						    	<img src="/laptopshop/img/${sanpham.id}.png" alt="not found img" class="img-reponsive fix-size-img">
+						    	<img src="/mobileshop/img/${sanpham.id}.png" alt="not found img" class="img-reponsive fix-size-img">
 						    </td>
 						    <td style="color:green">
 						    ${sanpham.tenSanPham}
