@@ -1,10 +1,10 @@
-package com.laptopshop.repository;
+package com.mobileshop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.laptopshop.entities.VaiTro;
+import com.mobileshop.entities.Role;
 
-public interface VaiTroRepository extends JpaRepository<VaiTro, Long> {
+public interface RoleRepository extends JpaRepository<Role, Long> {
 
-	VaiTro findByTenVaiTro(String tenVaiTro);
+	Role findByTenVaiTro(String tenVaiTro);
 }

@@ -1,4 +1,4 @@
-package com.laptopshop.api.admin;
+package com.mobileshop.api.admin;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,35 +23,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.laptopshop.dto.TaiKhoanDTO;
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.ResponseObject;
-import com.laptopshop.entities.VaiTro;
-import com.laptopshop.service.NguoiDungService;
-import com.laptopshop.service.VaiTroService;
-import com.laptopshop.validator.NguoiDungValidator;
+import com.mobileshop.dto.AccountDTO;
+import com.mobileshop.entities.User;
+import com.mobileshop.entities.ResponseObject;
+import com.mobileshop.entities.Role;
+import com.mobileshop.service.UserService;
+import com.mobileshop.service.RoleService;
 
 @RestController
 @RequestMapping("/api/tai-khoan")
-public class TaiKhoanApi {
+public class AccountApi {
 
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private UserService nguoiDungService;
 
 	@Autowired
-	private VaiTroService vaiTroService;
+	private RoleService vaiTroService;
 
 	@GetMapping("/all")
-	public Page<NguoiDung> getNguoiDungByVaiTro(@RequestParam("tenVaiTro") String tenVaiTro,
+	public Page<User> getNguoiDungByVaiTro(@RequestParam("tenVaiTro") String tenVaiTro,
 			@RequestParam(defaultValue = "1") int page) {
-		Set<VaiTro> vaiTro = new HashSet<>();
+		Set<Role> vaiTro = new HashSet<>();
 		vaiTro.add(vaiTroService.findByTenVaiTro(tenVaiTro));
 
 		return nguoiDungService.getNguoiDungByVaiTro(vaiTro, page);
 	}
 
 	@PostMapping("/save")
-	public ResponseObject saveTaiKhoan(@RequestBody @Valid TaiKhoanDTO dto, BindingResult result, Model model) {
+	public ResponseObject saveTaiKhoan(@RequestBody @Valid AccountDTO dto, BindingResult result, Model model) {
 		
 		ResponseObject ro = new ResponseObject();
 

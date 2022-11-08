@@ -1,23 +1,22 @@
-package com.laptopshop.service.impl;
+package com.mobileshop.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.laptopshop.entities.ChiTietDonHang;
-import com.laptopshop.repository.ChiMucGioHangRepository;
-import com.laptopshop.repository.ChiTietDonHangRepository;
-import com.laptopshop.service.ChiTietDonHangService;
+import com.mobileshop.entities.OrderDetails;
+import com.mobileshop.repository.OrderDetailsRepository;
+import com.mobileshop.service.OrderDetailsService;
 
 @Service
-public class ChiTietDonHangServiceImpl implements ChiTietDonHangService{
+public class OrderDetailsServiceImpl implements OrderDetailsService{
 	
 	@Autowired
-	private ChiTietDonHangRepository repo;
+	private OrderDetailsRepository repo;
 	
 	@Override
-	public List<ChiTietDonHang> save(List<ChiTietDonHang> list)
+	public List<OrderDetails> save(List<OrderDetails> list)
 	{	
 		return repo.saveAll(list);
 	}

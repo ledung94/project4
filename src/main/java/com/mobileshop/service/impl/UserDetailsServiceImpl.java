@@ -1,4 +1,4 @@
-package com.laptopshop.service.impl;
+package com.mobileshop.service.impl;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,28 +13,27 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.VaiTro;
-import com.laptopshop.repository.NguoiDungRepository;
+import com.mobileshop.entities.Role;
+import com.mobileshop.repository.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
-	private NguoiDungRepository repo;
+	private UserRepository repo;
 
 	@Override
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		NguoiDung user = repo.findByEmail(username);
+		com.mobileshop.entities.User user = repo.findByEmail(username);
 		if (user == null) {
 			throw new UsernameNotFoundException("User with email " + username + " was not be found");
 		}
 		
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-		Set<VaiTro> roles = user.getVaiTro();
-		for (VaiTro role : roles) {
+		Set<Role> roles = user.getVaiTro();
+		for (Role role : roles) {
 			grantedAuthorities.add(new SimpleGrantedAuthority(role.getTenVaiTro()));
 		}
 		return new User(username, user.getPassword(), grantedAuthorities);

@@ -1,4 +1,4 @@
-package com.laptopshop.service.impl;
+package com.mobileshop.service.impl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,22 +9,23 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.laptopshop.dto.SearchDonHangObject;
-import com.laptopshop.entities.DonHang;
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.QDonHang;
-import com.laptopshop.repository.DonHangRepository;
-import com.laptopshop.service.DonHangService;
+//import com.mobileshop.entities.QOrder;
+import com.mobileshop.dto.SearchDonHangObject;
+import com.mobileshop.entities.Order;
+import com.mobileshop.entities.QOrder;
+import com.mobileshop.entities.User;
+import com.mobileshop.repository.OrderRepository;
+import com.mobileshop.service.OrderService;
 import com.querydsl.core.BooleanBuilder;
 
 @Service
-public class DonHangServiceImpl implements DonHangService {
+public class OrderServiceImpl implements OrderService {
 
 	@Autowired
-	private DonHangRepository donHangRepo;
+	private OrderRepository donHangRepo;
 
 	@Override
-	public Page<DonHang> getAllDonHangByFilter(SearchDonHangObject object, int page) throws ParseException {
+	public Page<Order> getAllDonHangByFilter(SearchDonHangObject object, int page) throws ParseException {
 		BooleanBuilder builder = new BooleanBuilder();
 
 		String trangThaiDon = object.getTrangThaiDon();
@@ -33,26 +34,26 @@ public class DonHangServiceImpl implements DonHangService {
 		SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
 
 		if (!trangThaiDon.equals("")) {
-			builder.and(QDonHang.donHang.trangThaiDonHang.eq(trangThaiDon));
+			builder.and(QOrder.order.trangThaiDonHang.eq(trangThaiDon));
 		}
 
 		if (!tuNgay.equals("") && tuNgay != null) {
 			if (trangThaiDon.equals("") || trangThaiDon.equals("Đang chờ giao") || trangThaiDon.equals("Đã hủy")) {
-				builder.and(QDonHang.donHang.ngayDatHang.goe(formatDate.parse(tuNgay)));
+				builder.and(QOrder.order.ngayDatHang.goe(formatDate.parse(tuNgay)));
 			} else if (trangThaiDon.equals("Đang giao")) {
-				builder.and(QDonHang.donHang.ngayGiaoHang.goe(formatDate.parse(tuNgay)));
+				builder.and(QOrder.order.ngayGiaoHang.goe(formatDate.parse(tuNgay)));
 			} else { // hoàn thành
-				builder.and(QDonHang.donHang.ngayNhanHang.goe(formatDate.parse(tuNgay)));
+				builder.and(QOrder.order.ngayNhanHang.goe(formatDate.parse(tuNgay)));
 			}
 		}
 
 		if (!denNgay.equals("") && denNgay != null) {
 			if (trangThaiDon.equals("") || trangThaiDon.equals("Đang chờ giao") || trangThaiDon.equals("Đã hủy")) {
-				builder.and(QDonHang.donHang.ngayDatHang.loe(formatDate.parse(denNgay)));
+				builder.and(QOrder.order.ngayDatHang.loe(formatDate.parse(denNgay)));
 			} else if (trangThaiDon.equals("Đang giao")) {
-				builder.and(QDonHang.donHang.ngayGiaoHang.loe(formatDate.parse(denNgay)));
+				builder.and(QOrder.order.ngayGiaoHang.loe(formatDate.parse(denNgay)));
 			} else { // hoàn thành
-				builder.and(QDonHang.donHang.ngayNhanHang.loe(formatDate.parse(denNgay)));
+				builder.and(QOrder.order.ngayNhanHang.loe(formatDate.parse(denNgay)));
 			}
 		}
 
@@ -60,22 +61,22 @@ public class DonHangServiceImpl implements DonHangService {
 	}
 
 	@Override
-	public DonHang update(DonHang dh) {
+	public Order update(Order dh) {
 		return donHangRepo.save(dh);
 	}
 
 	@Override
-	public DonHang findById(long id) {
+	public Order findById(long id) {
 		return donHangRepo.findById(id).get();
 	}
 
 	@Override
-	public List<DonHang> findByTrangThaiDonHangAndShipper(String trangThai, NguoiDung shipper) {
+	public List<Order> findByTrangThaiDonHangAndShipper(String trangThai, User shipper) {
 		return donHangRepo.findByTrangThaiDonHangAndShipper(trangThai, shipper);
 	}
 
 	@Override
-	public DonHang save(DonHang dh) {
+	public Order save(Order dh) {
 		return donHangRepo.save(dh);
 	}
 
@@ -85,12 +86,12 @@ public class DonHangServiceImpl implements DonHangService {
 	}
 	
 	@Override
-	public List<DonHang> getDonHangByNguoiDung(NguoiDung ng) {
+	public List<Order> getDonHangByNguoiDung(User ng) {
 		return donHangRepo.findByNguoiDat(ng);
 	}
 
 	@Override
-	public Page<DonHang> findDonHangByShipper(SearchDonHangObject object, int page, int size, NguoiDung shipper) throws ParseException {
+	public Page<Order> findDonHangByShipper(SearchDonHangObject object, int page, int size, User shipper) throws ParseException {
 		BooleanBuilder builder = new BooleanBuilder();
 
 		String trangThaiDon = object.getTrangThaiDon();
@@ -98,25 +99,25 @@ public class DonHangServiceImpl implements DonHangService {
 		String denNgay = object.getDenNgay();
 		SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
 		
-		builder.and(QDonHang.donHang.shipper.eq(shipper));
+		builder.and(QOrder.order.shipper.eq(shipper));
 
 		if (!trangThaiDon.equals("")) {
-			builder.and(QDonHang.donHang.trangThaiDonHang.eq(trangThaiDon));
+			builder.and(QOrder.order.trangThaiDonHang.eq(trangThaiDon));
 		}
 
 		if (!tuNgay.equals("") && tuNgay != null) {
 			if (trangThaiDon.equals("Đang giao")) {
-				builder.and(QDonHang.donHang.ngayGiaoHang.goe(formatDate.parse(tuNgay)));
+				builder.and(QOrder.order.ngayGiaoHang.goe(formatDate.parse(tuNgay)));
 			} else { // hoàn thành
-				builder.and(QDonHang.donHang.ngayNhanHang.goe(formatDate.parse(tuNgay)));
+				builder.and(QOrder.order.ngayNhanHang.goe(formatDate.parse(tuNgay)));
 			}
 		}
 
 		if (!denNgay.equals("") && denNgay != null) {
 			if (trangThaiDon.equals("Đang giao")) {
-				builder.and(QDonHang.donHang.ngayGiaoHang.loe(formatDate.parse(denNgay)));
+				builder.and(QOrder.order.ngayGiaoHang.loe(formatDate.parse(denNgay)));
 			} else { // hoàn thành
-				builder.and(QDonHang.donHang.ngayNhanHang.loe(formatDate.parse(denNgay)));
+				builder.and(QOrder.order.ngayNhanHang.loe(formatDate.parse(denNgay)));
 			}
 		}
 

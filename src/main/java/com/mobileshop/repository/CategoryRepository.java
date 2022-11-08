@@ -1,9 +1,9 @@
-package com.laptopshop.repository;
+package com.mobileshop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.laptopshop.entities.DanhMuc;
+import com.mobileshop.entities.Category;
 
-public interface DanhMucRepository extends JpaRepository<DanhMuc, Long>{
+public interface CategoryRepository extends JpaRepository<Category, Long>{
 
 }

@@ -1,10 +1,10 @@
-package com.laptopshop.dto;
+package com.mobileshop.dto;
 
 import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
 
-public class LienHeDTO {
+public class ContactDTO {
 
 	@Override
 	public String toString() {

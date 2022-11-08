@@ -1,19 +1,19 @@
-package com.laptopshop.service;
+package com.mobileshop.service;
 
 import java.text.ParseException;
 
 import org.springframework.data.domain.Page;
 
-import com.laptopshop.dto.SearchLienHeObject;
-import com.laptopshop.entities.LienHe;
+import com.mobileshop.dto.SearchContactObject;
+import com.mobileshop.entities.Contact;
 
-public interface LienHeService {
+public interface ContactService {
 
-	Page<LienHe> getLienHeByFilter(SearchLienHeObject object, int page) throws ParseException;
+	Page<Contact> getLienHeByFilter(SearchContactObject object, int page) throws ParseException;
 
-	LienHe findById(long id);
+	Contact findById(long id);
 	
-	LienHe save(LienHe lh);
+	Contact save(Contact lh);
 	
 	int countByTrangThai(String trangThai);
 

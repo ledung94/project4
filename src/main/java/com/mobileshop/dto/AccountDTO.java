@@ -1,11 +1,11 @@
-package com.laptopshop.dto;
+package com.mobileshop.dto;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-public class TaiKhoanDTO {
+public class AccountDTO {
 	
 	private String id;
 	

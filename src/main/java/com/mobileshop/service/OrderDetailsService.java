@@ -1,9 +1,9 @@
-package com.laptopshop.service;
+package com.mobileshop.service;
 
 import java.util.List;
 
-import com.laptopshop.entities.ChiTietDonHang;
+import com.mobileshop.entities.OrderDetails;
 
-public interface ChiTietDonHangService {
-	List<ChiTietDonHang> save(List<ChiTietDonHang> list);
+public interface OrderDetailsService {
+	List<OrderDetails> save(List<OrderDetails> list);
 }

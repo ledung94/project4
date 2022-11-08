@@ -1,4 +1,4 @@
-package com.laptopshop.controller;
+package com.mobileshop.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,52 +22,52 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.laptopshop.entities.ChiMucGioHang;
-import com.laptopshop.entities.ChiTietDonHang;
-import com.laptopshop.entities.DonHang;
-import com.laptopshop.entities.GioHang;
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.SanPham;
-import com.laptopshop.service.ChiMucGioHangService;
-import com.laptopshop.service.ChiTietDonHangService;
-import com.laptopshop.service.DonHangService;
-import com.laptopshop.service.GioHangService;
-import com.laptopshop.service.NguoiDungService;
-import com.laptopshop.service.SanPhamService;
+import com.mobileshop.entities.CartDetails;
+import com.mobileshop.entities.OrderDetails;
+import com.mobileshop.entities.Order;
+import com.mobileshop.entities.Cart;
+import com.mobileshop.entities.User;
+import com.mobileshop.entities.Product;
+import com.mobileshop.service.CartDetailsService;
+import com.mobileshop.service.OrderDetailsService;
+import com.mobileshop.service.OrderService;
+import com.mobileshop.service.CartService;
+import com.mobileshop.service.UserService;
+import com.mobileshop.service.ProductService;
 
 @Controller
 @SessionAttributes("loggedInUser")
 public class CheckOutController {
 	
 	@Autowired
-	private SanPhamService sanPhamService;
+	private ProductService sanPhamService;
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private UserService nguoiDungService;
 	@Autowired
-	private GioHangService gioHangService;
+	private CartService gioHangService;
 	@Autowired
-	private ChiMucGioHangService chiMucGioHangService;
+	private CartDetailsService chiMucGioHangService;
 	@Autowired
-	private DonHangService donHangService;
+	private OrderService donHangService;
 	@Autowired
-	private ChiTietDonHangService chiTietDonHangService;
+	private OrderDetailsService chiTietDonHangService;
 
 	@ModelAttribute("loggedInUser")
-	public NguoiDung loggedInUser() {
+	public User loggedInUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return nguoiDungService.findByEmail(auth.getName());
 	}
 	
-	public NguoiDung getSessionUser(HttpServletRequest request) {
-		return (NguoiDung) request.getSession().getAttribute("loggedInUser");
+	public User getSessionUser(HttpServletRequest request) {
+		return (User) request.getSession().getAttribute("loggedInUser");
 	}
 	
 	@GetMapping("/checkout")
 	public String checkoutPage(HttpServletRequest res,Model model) {
-		NguoiDung currentUser = getSessionUser(res);
+		User currentUser = getSessionUser(res);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Map<Long,String> quanity = new HashMap<Long,String>();
-		List<SanPham> listsp = new ArrayList<SanPham>();
+		List<Product> listsp = new ArrayList<Product>();
 				
 		if(auth == null || auth.getPrincipal() == "anonymousUser")     //Lay tu cookie
 		{
@@ -85,12 +85,12 @@ public class CheckOutController {
 			listsp = sanPhamService.getAllSanPhamByList(idList);
 		}else     //Lay tu database
 		{
-			GioHang g = gioHangService.getGioHangByNguoiDung(currentUser);
+			Cart g = gioHangService.getGioHangByNguoiDung(currentUser);
 			if(g != null)
 			{
-				List<ChiMucGioHang> listchimuc = chiMucGioHangService.getChiMucGioHangByGioHang(g);
+				List<CartDetails> listchimuc = chiMucGioHangService.getChiMucGioHangByGioHang(g);
 				
-				for(ChiMucGioHang c: listchimuc)
+				for(CartDetails c: listchimuc)
 				{
 					
 					listsp.add(c.getSanPham());
@@ -103,25 +103,25 @@ public class CheckOutController {
 		model.addAttribute("cart",listsp);
 		model.addAttribute("quanity",quanity);
 		model.addAttribute("user", currentUser);
-		model.addAttribute("donhang", new DonHang());
+		model.addAttribute("donhang", new Order());
 		
 		return "client/checkout";
 	}
 	
 	@PostMapping(value="/thankyou")
-	public String thankyouPage(@ModelAttribute("donhang") DonHang donhang ,HttpServletRequest req,HttpServletResponse response ,Model model){
+	public String thankyouPage(@ModelAttribute("donhang") Order donhang ,HttpServletRequest req,HttpServletResponse response ,Model model){
 		donhang.setNgayDatHang(new Date());
 		donhang.setTrangThaiDonHang("Đang chờ giao");
 
-		NguoiDung currentUser = getSessionUser(req);
+		User currentUser = getSessionUser(req);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Map<Long,String> quanity = new HashMap<Long,String>();
-		List<SanPham> listsp = new ArrayList<SanPham>();
-		List<ChiTietDonHang> listDetailDH = new ArrayList<ChiTietDonHang>();
+		List<Product> listsp = new ArrayList<Product>();
+		List<OrderDetails> listDetailDH = new ArrayList<OrderDetails>();
 	
 		if(auth == null || auth.getPrincipal() == "anonymousUser")     //Lay tu cookie
 		{
-			DonHang d = donHangService.save(donhang);
+			Order d = donHangService.save(donhang);
 			Cookie cl[] = req.getCookies();		
 			Set<Long> idList = new HashSet<Long>();
 			for(int i=0; i< cl.length; i++)
@@ -133,9 +133,9 @@ public class CheckOutController {
 				}	
 			}
 			listsp = sanPhamService.getAllSanPhamByList(idList);
-			for(SanPham sp: listsp)
+			for(Product sp: listsp)
 			{
-				ChiTietDonHang detailDH = new ChiTietDonHang();
+				OrderDetails detailDH = new OrderDetails();
 				detailDH.setSanPham(sp);
 				detailDH.setSoLuongDat(Integer.parseInt(quanity.get(sp.getId())));
 				detailDH.setDonGia(Integer.parseInt(quanity.get(sp.getId()))*sp.getDonGia());
@@ -145,12 +145,12 @@ public class CheckOutController {
 		}else     //Lay tu database
 		{
 			donhang.setNguoiDat(currentUser);
-			DonHang d = donHangService.save(donhang);
-			GioHang g = gioHangService.getGioHangByNguoiDung(currentUser);
-			List<ChiMucGioHang> listchimuc = chiMucGioHangService.getChiMucGioHangByGioHang(g);
-			for(ChiMucGioHang c: listchimuc)
+			Order d = donHangService.save(donhang);
+			Cart g = gioHangService.getGioHangByNguoiDung(currentUser);
+			List<CartDetails> listchimuc = chiMucGioHangService.getChiMucGioHangByGioHang(g);
+			for(CartDetails c: listchimuc)
 			{			
-				ChiTietDonHang detailDH = new ChiTietDonHang();
+				OrderDetails detailDH = new OrderDetails();
 				detailDH.setSanPham(c.getSanPham());
 				detailDH.setDonGia(c.getSo_luong()*c.getSanPham().getDonGia());	
 				detailDH.setSoLuongDat(c.getSo_luong());
@@ -174,7 +174,7 @@ public class CheckOutController {
 	
 	public void cleanUpAfterCheckOut(HttpServletRequest request, HttpServletResponse response)
 	{
-		NguoiDung currentUser = getSessionUser(request);
+		User currentUser = getSessionUser(request);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
 		if(auth == null || auth.getPrincipal() == "anonymousUser")    //Su dung cookie de luu
@@ -191,8 +191,8 @@ public class CheckOutController {
 			}
 		}else //Su dung database de luu
 		{
-			GioHang g = gioHangService.getGioHangByNguoiDung(currentUser);
-			List<ChiMucGioHang> c = chiMucGioHangService.getChiMucGioHangByGioHang(g);
+			Cart g = gioHangService.getGioHangByNguoiDung(currentUser);
+			List<CartDetails> c = chiMucGioHangService.getChiMucGioHangByGioHang(g);
 			chiMucGioHangService.deleteAllChiMucGiohang(c);
 		}
 	}

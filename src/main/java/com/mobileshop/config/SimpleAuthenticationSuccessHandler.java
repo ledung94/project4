@@ -1,4 +1,4 @@
-package com.laptopshop.config;
+package com.mobileshop.config;
 
 import java.io.IOException;
 import java.util.Collection;

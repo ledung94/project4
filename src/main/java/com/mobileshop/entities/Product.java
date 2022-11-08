@@ -1,4 +1,4 @@
-package com.laptopshop.entities;
+package com.mobileshop.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class SanPham {
+public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,11 +38,11 @@ public class SanPham {
 
 	@ManyToOne
 	@JoinColumn(name = "ma_danh_muc")
-	private DanhMuc danhMuc;
+	private Category danhMuc;
 
 	@ManyToOne
 	@JoinColumn(name = "ma_hang_sx")
-	private HangSanXuat hangSanXuat;
+	private Manufacturer hangSanXuat;
 
 	public String getTenSanPham() {
 		return tenSanPham;
@@ -148,19 +148,19 @@ public class SanPham {
 		this.dungLuongPin = dungLuongPin;
 	}
 
-	public DanhMuc getDanhMuc() {
+	public Category getDanhMuc() {
 		return danhMuc;
 	}
 
-	public void setDanhMuc(DanhMuc danhMuc) {
+	public void setDanhMuc(Category danhMuc) {
 		this.danhMuc = danhMuc;
 	}
 
-	public HangSanXuat getHangSanXuat() {
+	public Manufacturer getHangSanXuat() {
 		return hangSanXuat;
 	}
 
-	public void setHangSanXuat(HangSanXuat hangSanXuat) {
+	public void setHangSanXuat(Manufacturer hangSanXuat) {
 		this.hangSanXuat = hangSanXuat;
 	}
 	

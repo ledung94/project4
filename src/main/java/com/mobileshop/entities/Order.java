@@ -1,4 +1,4 @@
-package com.laptopshop.entities;
+package com.mobileshop.entities;
 
 import java.util.Date;
 import java.util.List;
@@ -16,14 +16,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-public class DonHang {
+public class Order {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	@OneToMany(mappedBy = "donHang")
-	private List<ChiTietDonHang> danhSachChiTiet;
+	private List<OrderDetails> danhSachChiTiet;
 
 	private String diaChiNhan;
 	private String sdtNhanHang;
@@ -46,11 +46,11 @@ public class DonHang {
 
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "ma_nguoi_dat")
-	private NguoiDung nguoiDat;
+	private User nguoiDat;
 
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "ma_shipper")
-	private NguoiDung shipper;
+	private User shipper;
 
 	private long tongGiaTri;
 
@@ -70,11 +70,11 @@ public class DonHang {
 		this.id = id;
 	}
 
-	public List<ChiTietDonHang> getDanhSachChiTiet() {
+	public List<OrderDetails> getDanhSachChiTiet() {
 		return danhSachChiTiet;
 	}
 
-	public void setDanhSachChiTiet(List<ChiTietDonHang> danhSachChiTiet) {
+	public void setDanhSachChiTiet(List<OrderDetails> danhSachChiTiet) {
 		this.danhSachChiTiet = danhSachChiTiet;
 	}
 
@@ -118,19 +118,19 @@ public class DonHang {
 		this.ngayNhanHang = ngayNhanHang;
 	}
 
-	public NguoiDung getNguoiDat() {
+	public User getNguoiDat() {
 		return nguoiDat;
 	}
 
-	public void setNguoiDat(NguoiDung nguoiDat) {
+	public void setNguoiDat(User nguoiDat) {
 		this.nguoiDat = nguoiDat;
 	}
 
-	public NguoiDung getShipper() {
+	public User getShipper() {
 		return shipper;
 	}
 
-	public void setShipper(NguoiDung shipper) {
+	public void setShipper(User shipper) {
 		this.shipper = shipper;
 	}
 
@@ -158,7 +158,7 @@ public class DonHang {
 		this.hoTenNguoiNhan = hoTenNguoiNhan;
 	}
 
-	public DonHang() {
+	public Order() {
 		// TODO Auto-generated constructor stub
 	}
 

@@ -1,4 +1,4 @@
-package com.laptopshop.api.admin;
+package com.mobileshop.api.admin;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -14,50 +14,50 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.laptopshop.entities.ChiMucGioHang;
-import com.laptopshop.entities.GioHang;
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.ResponseObject;
-import com.laptopshop.entities.SanPham;
-import com.laptopshop.service.ChiMucGioHangService;
-import com.laptopshop.service.GioHangService;
-import com.laptopshop.service.NguoiDungService;
-import com.laptopshop.service.SanPhamService;
+import com.mobileshop.entities.CartDetails;
+import com.mobileshop.entities.Cart;
+import com.mobileshop.entities.User;
+import com.mobileshop.entities.ResponseObject;
+import com.mobileshop.entities.Product;
+import com.mobileshop.service.CartDetailsService;
+import com.mobileshop.service.CartService;
+import com.mobileshop.service.UserService;
+import com.mobileshop.service.ProductService;
 
 @RestController
 @RequestMapping("api/gio-hang")
 @SessionAttributes("loggedInUser")
-public class GioHangApi  {
+public class CartApi  {
 	
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private UserService nguoiDungService;
 	@Autowired
-	private GioHangService gioHangService;
+	private CartService gioHangService;
 	@Autowired
-	private SanPhamService sanPhamService;
+	private ProductService sanPhamService;
 	@Autowired
-	private ChiMucGioHangService chiMucGioHangService;
+	private CartDetailsService chiMucGioHangService;
 	
 	@ModelAttribute("loggedInUser")
-	public NguoiDung loggedInUser() {
+	public User loggedInUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return nguoiDungService.findByEmail(auth.getName());
 	}
 	
-	public NguoiDung getSessionUser(HttpServletRequest request) {
-		return (NguoiDung) request.getSession().getAttribute("loggedInUser");
+	public User getSessionUser(HttpServletRequest request) {
+		return (User) request.getSession().getAttribute("loggedInUser");
 	}
 	
 	@GetMapping("/addSanPham")
 	public ResponseObject addToCart(@RequestParam String id,HttpServletRequest request,HttpServletResponse response) {
 		ResponseObject ro = new ResponseObject();
-		SanPham sp = sanPhamService.getSanPhamById(Long.parseLong(id));
+		Product sp = sanPhamService.getSanPhamById(Long.parseLong(id));
 		if(sp.getDonViKho() == 0)
 		{
 			ro.setStatus("false");
 			return ro;
 		}
-		NguoiDung currentUser = getSessionUser(request);
+		User currentUser = getSessionUser(request);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();	
 		if(auth == null || auth.getPrincipal() == "anonymousUser" )    //Su dung cookie de luu
 		{
@@ -83,20 +83,20 @@ public class GioHangApi  {
 				response.addCookie(c);
 			}
 		}else {     //Su dung database de luu
-			GioHang g = gioHangService.getGioHangByNguoiDung(currentUser);
+			Cart g = gioHangService.getGioHangByNguoiDung(currentUser);
 			if(g==null)
 			{
-				g = new GioHang();
+				g = new Cart();
 				g.setNguoiDung(currentUser);
 				g = gioHangService.save(g);			
 			}
 			
-			ChiMucGioHang c = chiMucGioHangService.getChiMucGioHangBySanPhamAndGioHang(sp,g);
+			CartDetails c = chiMucGioHangService.getChiMucGioHangBySanPhamAndGioHang(sp,g);
 			if(c== null)     //Neu khong tim chi muc gio hang, tao moi
 			{
 				System.out.println(g.getNguoiDung().getEmail());
 				System.out.println(g.getId());
-				c = new ChiMucGioHang();
+				c = new CartDetails();
 				c.setGioHang(g);
 				c.setSanPham(sp);
 				c.setSo_luong(1);
@@ -112,7 +112,7 @@ public class GioHangApi  {
 	
 	@GetMapping("/changSanPhamQuanity")
 	public ResponseObject changeQuanity(@RequestParam String id,@RequestParam String value,HttpServletRequest request,HttpServletResponse response) {
-		NguoiDung currentUser = getSessionUser(request);
+		User currentUser = getSessionUser(request);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		ResponseObject ro = new ResponseObject();
 		if(auth == null || auth.getPrincipal() == "anonymousUser" )    //Su dung cookie de luu
@@ -131,9 +131,9 @@ public class GioHangApi  {
 			}
 		}else //Su dung database de luu
 		{
-			GioHang g = gioHangService.getGioHangByNguoiDung(currentUser);
-			SanPham sp = sanPhamService.getSanPhamById(Long.parseLong(id));
-			ChiMucGioHang c = chiMucGioHangService.getChiMucGioHangBySanPhamAndGioHang(sp,g);
+			Cart g = gioHangService.getGioHangByNguoiDung(currentUser);
+			Product sp = sanPhamService.getSanPhamById(Long.parseLong(id));
+			CartDetails c = chiMucGioHangService.getChiMucGioHangBySanPhamAndGioHang(sp,g);
 			c.setSo_luong(Integer.parseInt(value));
 			c = chiMucGioHangService.saveChiMucGiohang(c);
 		}
@@ -143,7 +143,7 @@ public class GioHangApi  {
 	
 	@GetMapping("/deleteFromCart")
 	public ResponseObject deleteSanPham(@RequestParam String id,HttpServletRequest request,HttpServletResponse response) {
-		NguoiDung currentUser = getSessionUser(request);
+		User currentUser = getSessionUser(request);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();	
 		ResponseObject ro = new ResponseObject();
 		if(auth == null || auth.getPrincipal() == "anonymousUser")    //Su dung cookie de luu
@@ -162,9 +162,9 @@ public class GioHangApi  {
 			}
 		}else //Su dung database de luu
 		{
-			GioHang g = gioHangService.getGioHangByNguoiDung(currentUser);
-			SanPham sp = sanPhamService.getSanPhamById(Long.parseLong(id));
-			ChiMucGioHang c = chiMucGioHangService.getChiMucGioHangBySanPhamAndGioHang(sp,g);
+			Cart g = gioHangService.getGioHangByNguoiDung(currentUser);
+			Product sp = sanPhamService.getSanPhamById(Long.parseLong(id));
+			CartDetails c = chiMucGioHangService.getChiMucGioHangBySanPhamAndGioHang(sp,g);
 			chiMucGioHangService.deleteChiMucGiohang(c);
 		}
 		

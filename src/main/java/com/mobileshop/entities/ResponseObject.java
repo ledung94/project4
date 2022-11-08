@@ -1,4 +1,4 @@
-package com.laptopshop.entities;
+package com.mobileshop.entities;
 
 import java.util.Map;
 

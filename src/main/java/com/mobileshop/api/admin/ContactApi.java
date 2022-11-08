@@ -1,9 +1,7 @@
-package com.laptopshop.api.admin;
+package com.mobileshop.api.admin;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -11,7 +9,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,48 +19,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.laptopshop.dto.LienHeDTO;
-import com.laptopshop.dto.SearchLienHeObject;
-import com.laptopshop.entities.LienHe;
-import com.laptopshop.entities.ResponseObject;
-import com.laptopshop.service.LienHeService;
-import com.laptopshop.service.NguoiDungService;
-import com.laptopshop.ulti.EmailUlti;
+import com.mobileshop.dto.ContactDTO;
+import com.mobileshop.dto.SearchContactObject;
+import com.mobileshop.entities.Contact;
+import com.mobileshop.entities.ResponseObject;
+import com.mobileshop.service.ContactService;
+import com.mobileshop.ulti.EmailUlti;
 
 @RestController
 @RequestMapping("/api/lien-he")
-public class LienHeApi {
+public class ContactApi {
 
 	@Autowired
-	private LienHeService lienHeService;
-
-	@Autowired
-	private NguoiDungService nguoiDungService;
+	private ContactService lienHeService;
 
 	@Autowired
 	private EmailUlti emailUlti;
 
 	@GetMapping("/all")
-	public Page<LienHe> getLienHeByFilter(@RequestParam(defaultValue = "1") int page,
+	public Page<Contact> getLienHeByFilter(@RequestParam(defaultValue = "1") int page,
 			@RequestParam String trangThaiLienHe, @RequestParam String tuNgay, @RequestParam String denNgay)
 			throws ParseException {
 
-		SearchLienHeObject object = new SearchLienHeObject();
+		SearchContactObject object = new SearchContactObject();
 		object.setDenNgay(denNgay);
 		object.setTrangThaiLienHe(trangThaiLienHe);
 		object.setTuNgay(tuNgay);
 
-		Page<LienHe> listLienHe = lienHeService.getLienHeByFilter(object, page);
+		Page<Contact> listLienHe = lienHeService.getLienHeByFilter(object, page);
 		return listLienHe;
 	}
 
 	@GetMapping("/{id}")
-	public LienHe getLienHeById(@PathVariable long id) {
+	public Contact getLienHeById(@PathVariable long id) {
 		return lienHeService.findById(id);
 	}
 
 	@PostMapping("/reply")
-	public ResponseObject tradLoiLienHeProcess(@RequestBody @Valid LienHeDTO dto, BindingResult result) {
+	public ResponseObject tradLoiLienHeProcess(@RequestBody @Valid ContactDTO dto, BindingResult result) {
 
 		ResponseObject ro = new ResponseObject();
 
@@ -84,7 +77,7 @@ public class LienHeApi {
 			
 			emailUlti.sendEmail(dto.getDiaChiDen(), dto.getTieuDe(), dto.getNoiDungTraLoi());
 			
-			LienHe lienHe = lienHeService.findById(dto.getId());
+			Contact lienHe = lienHeService.findById(dto.getId());
 			lienHe.setTrangThai("Đã trả lời");
 			lienHe.setNgayTraLoi(new Date());
 			lienHe.setNoiDungTraLoi(dto.getNoiDungTraLoi());

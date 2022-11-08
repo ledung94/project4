@@ -1,4 +1,4 @@
-package com.laptopshop.api.admin;
+package com.mobileshop.api.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,34 +22,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.laptopshop.entities.DanhMuc;
-import com.laptopshop.entities.ResponseObject;
-import com.laptopshop.service.DanhMucService;
+import com.mobileshop.entities.Category;
+import com.mobileshop.entities.ResponseObject;
+import com.mobileshop.service.CategoryService;
 
 @RestController
 @RequestMapping("api/danh-muc")
-public class DanhMucApi {
+public class CategoryApi {
 
 	@Autowired
-	private DanhMucService danhMucService;
+	private CategoryService danhMucService;
 
 	@GetMapping("/all")
-	public Page<DanhMuc> getAllDanhMuc(@RequestParam(defaultValue = "1") int page) {
+	public Page<Category> getAllDanhMuc(@RequestParam(defaultValue = "1") int page) {
 		return danhMucService.getAllDanhMucForPageable(page-1,6);
 	}
 	
 	@GetMapping("/allForReal")
-	public List<DanhMuc> getRealAllDanhMuc() {
+	public List<Category> getRealAllDanhMuc() {
 		return danhMucService.getAllDanhMuc();
 	}
 
 	@GetMapping("/{id}")
-	public DanhMuc getDanhMucById(@PathVariable long id) {
+	public Category getDanhMucById(@PathVariable long id) {
 		return danhMucService.getDanhMucById(id);
 	}
 
 	@PostMapping(value = "/save")
-	public ResponseObject addDanhMuc(@RequestBody @Valid DanhMuc newDanhMuc, BindingResult result, HttpServletRequest request) {
+	public ResponseObject addDanhMuc(@RequestBody @Valid Category newDanhMuc, BindingResult result, HttpServletRequest request) {
 		
 		ResponseObject ro = new ResponseObject();
 		
@@ -76,7 +76,7 @@ public class DanhMucApi {
 	}
 	
 	@PutMapping(value = "/update")
-	public ResponseObject updateDanhMuc(@RequestBody @Valid DanhMuc editDanhMuc, BindingResult result, HttpServletRequest request) {
+	public ResponseObject updateDanhMuc(@RequestBody @Valid Category editDanhMuc, BindingResult result, HttpServletRequest request) {
 		
 		ResponseObject ro = new ResponseObject();		
 		if (result.hasErrors()) {

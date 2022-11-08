@@ -1,11 +1,11 @@
-package com.laptopshop.repository;
+package com.mobileshop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
-import com.laptopshop.entities.LienHe;
+import com.mobileshop.entities.Contact;
 
-public interface LienHeRepository extends JpaRepository<LienHe, Long>, QuerydslPredicateExecutor<LienHe>{
+public interface ContactRepository extends JpaRepository<Contact, Long>, QuerydslPredicateExecutor<Contact>{
 
 	int countByTrangThai(String trangThai);
 	

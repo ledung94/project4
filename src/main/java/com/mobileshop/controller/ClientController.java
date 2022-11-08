@@ -1,4 +1,4 @@
-package com.laptopshop.controller;
+package com.mobileshop.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,16 +27,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.laptopshop.dto.SearchSanPhamObject;
-import com.laptopshop.entities.DanhMuc;
-import com.laptopshop.entities.LienHe;
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.ResponseObject;
-import com.laptopshop.entities.SanPham;
-import com.laptopshop.service.DanhMucService;
-import com.laptopshop.service.LienHeService;
-import com.laptopshop.service.NguoiDungService;
-import com.laptopshop.service.SanPhamService;
+import com.mobileshop.dto.SearchProductObject;
+import com.mobileshop.entities.Category;
+import com.mobileshop.entities.Contact;
+import com.mobileshop.entities.User;
+import com.mobileshop.entities.ResponseObject;
+import com.mobileshop.entities.Product;
+import com.mobileshop.service.CategoryService;
+import com.mobileshop.service.ContactService;
+import com.mobileshop.service.UserService;
+import com.mobileshop.service.ProductService;
 
 @Controller
 @SessionAttributes("loggedInUser")
@@ -44,30 +44,30 @@ import com.laptopshop.service.SanPhamService;
 public class ClientController {
 
 	@Autowired
-	private SanPhamService sanPhamService;
+	private ProductService sanPhamService;
 
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private UserService nguoiDungService;
 	
 	@Autowired
-	private DanhMucService danhMucService;
+	private CategoryService danhMucService;
 	
 	@Autowired
-	private LienHeService lienHeService;
+	private ContactService lienHeService;
 
 	@ModelAttribute("loggedInUser")
-	public NguoiDung loggedInUser() {
+	public User loggedInUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return nguoiDungService.findByEmail(auth.getName());
 	}
 	
 	@ModelAttribute("listDanhMuc")
-	public List<DanhMuc> listDanhMuc(){
+	public List<Category> listDanhMuc(){
 		return danhMucService.getAllDanhMuc();
 	}
 
-	public NguoiDung getSessionUser(HttpServletRequest request) {
-		return (NguoiDung) request.getSession().getAttribute("loggedInUser");
+	public User getSessionUser(HttpServletRequest request) {
+		return (User) request.getSession().getAttribute("loggedInUser");
 	}
 
 	@GetMapping
@@ -87,7 +87,7 @@ public class ClientController {
 	
 	@PostMapping("/createContact")
 	@ResponseBody
-	public ResponseObject createContact(@RequestBody LienHe lh)
+	public ResponseObject createContact(@RequestBody Contact lh)
 	{
 		lh.setNgayLienHe(new Date());
 		lienHeService.save(lh);
@@ -96,14 +96,14 @@ public class ClientController {
 
 	@GetMapping("/store")
 	public String storePage(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "") String range,@RequestParam(defaultValue = "") String brand,@RequestParam(defaultValue = "") String manufactor,@RequestParam(defaultValue = "") String os,@RequestParam(defaultValue = "") String ram,@RequestParam(defaultValue = "") String pin,Model model) {		
-		SearchSanPhamObject obj = new SearchSanPhamObject();
+		SearchProductObject obj = new SearchProductObject();
 		obj.setBrand(brand);
 		obj.setDonGia(range);
 		obj.setManufactor(manufactor);
 		obj.setOs(os);
 		obj.setRam(ram);
 		obj.setPin(pin);
-		Page<SanPham> list = sanPhamService.getSanPhamByBrand(obj,page,12);
+		Page<Product> list = sanPhamService.getSanPhamByBrand(obj,page,12);
 		int totalPage = list.getTotalPages();
 		model.addAttribute("totalPage",totalPage);
 		model.addAttribute("list",list.getContent());
@@ -147,8 +147,8 @@ public class ClientController {
 		//Lay cac danh muc va hang san xuat tim thay
 		Set<String> hangsx = new HashSet<String>();
 		Set<String> pinSet = new HashSet<String>();
-		Iterable<SanPham> dum = sanPhamService.getSanPhamByTenDanhMuc(brand);
-		for(SanPham sp: dum)
+		Iterable<Product> dum = sanPhamService.getSanPhamByTenDanhMuc(brand);
+		for(Product sp: dum)
 		{
 			hangsx.add(sp.getHangSanXuat().getTenHangSanXuat());
 			if(brand.equals("Laptop"))
@@ -163,7 +163,7 @@ public class ClientController {
 
 	@GetMapping("/sp")
 	public String detailspPage(@RequestParam int id, Model model) {
-		SanPham sp = sanPhamService.getSanPhamById(id);
+		Product sp = sanPhamService.getSanPhamById(id);
 		model.addAttribute("sp", sp);
 		return "client/detailsp";
 	}

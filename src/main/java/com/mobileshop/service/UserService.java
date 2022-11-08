@@ -1,33 +1,33 @@
-package com.laptopshop.service;
+package com.mobileshop.service;
 
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.domain.Page;
 
-import com.laptopshop.dto.TaiKhoanDTO;
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.VaiTro;
+import com.mobileshop.dto.AccountDTO;
+import com.mobileshop.entities.User;
+import com.mobileshop.entities.Role;
 
-public interface NguoiDungService {
+public interface UserService {
 
-	NguoiDung findByEmail(String email);
+	User findByEmail(String email);
 
-	NguoiDung findByConfirmationToken(String confirmationToken);
+	User findByConfirmationToken(String confirmationToken);
 
-	NguoiDung saveUserForMember(NguoiDung nd);
+	User saveUserForMember(User nd);
 
-	NguoiDung findById(long id);
+	User findById(long id);
 
-	NguoiDung updateUser(NguoiDung nd);
+	User updateUser(User nd);
 
-	void changePass(NguoiDung nd, String newPass);
+	void changePass(User nd, String newPass);
 
-	Page<NguoiDung> getNguoiDungByVaiTro(Set<VaiTro> vaiTro, int page);
+	Page<User> getNguoiDungByVaiTro(Set<Role> vaiTro, int page);
 
-	List<NguoiDung> getNguoiDungByVaiTro(Set<VaiTro> vaiTro);
+	List<User> getNguoiDungByVaiTro(Set<Role> vaiTro);
 	
-	NguoiDung saveUserForAdmin(TaiKhoanDTO dto);
+	User saveUserForAdmin(AccountDTO dto);
 
 	void deleteById(long id);
 

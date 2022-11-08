@@ -1,9 +1,9 @@
-package com.laptopshop.repository;
+package com.mobileshop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.laptopshop.entities.HangSanXuat;
+import com.mobileshop.entities.Manufacturer;
 
-public interface HangSanXuatRepository extends JpaRepository<HangSanXuat, Long>{
+public interface ManufacturerRepository extends JpaRepository<Manufacturer, Long>{
 
 }

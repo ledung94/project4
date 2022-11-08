@@ -1,4 +1,4 @@
-package com.laptopshop.api.admin;
+package com.mobileshop.api.admin;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.laptopshop.dto.PasswordDTO;
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.ResponseObject;
-import com.laptopshop.service.NguoiDungService;
+import com.mobileshop.dto.PasswordDTO;
+import com.mobileshop.entities.User;
+import com.mobileshop.entities.ResponseObject;
+import com.mobileshop.service.UserService;
 
 
 @RestController
@@ -28,14 +28,14 @@ import com.laptopshop.service.NguoiDungService;
 public class ProfileApi {
 
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private UserService nguoiDungService;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
 	@GetMapping("/{id}")
-	public NguoiDung getNguoiDungById(@PathVariable long id) {
-		NguoiDung nd = nguoiDungService.findById(id);
+	public User getNguoiDungById(@PathVariable long id) {
+		User nd = nguoiDungService.findById(id);
 		return nd;
 	}
 
@@ -43,7 +43,7 @@ public class ProfileApi {
 	public ResponseObject changePass(@RequestBody @Valid PasswordDTO dto, BindingResult result,
 			HttpServletRequest request) {
 		System.out.println(dto.toString());
-		NguoiDung currentUser = getSessionUser(request);
+		User currentUser = getSessionUser(request);
 
 		ResponseObject ro = new ResponseObject();
 		
@@ -72,7 +72,7 @@ public class ProfileApi {
 		return ro;
 	}
 
-	public NguoiDung getSessionUser(HttpServletRequest request) {
-		return (NguoiDung) request.getSession().getAttribute("loggedInUser");
+	public User getSessionUser(HttpServletRequest request) {
+		return (User) request.getSession().getAttribute("loggedInUser");
 	}
 }

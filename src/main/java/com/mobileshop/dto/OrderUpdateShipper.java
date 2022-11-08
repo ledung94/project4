@@ -1,8 +1,8 @@
-package com.laptopshop.dto;
+package com.mobileshop.dto;
 
 import java.util.List;
 
-public class CapNhatDonHangShipper {
+public class OrderUpdateShipper {
 	
 	private long idDonHang;
 	private String ghiChuShipper;

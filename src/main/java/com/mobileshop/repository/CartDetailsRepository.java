@@ -1,16 +1,16 @@
-package com.laptopshop.repository;
+package com.mobileshop.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.laptopshop.entities.ChiMucGioHang;
-import com.laptopshop.entities.GioHang;
-import com.laptopshop.entities.SanPham;
+import com.mobileshop.entities.CartDetails;
+import com.mobileshop.entities.Cart;
+import com.mobileshop.entities.Product;
 
-public interface ChiMucGioHangRepository extends JpaRepository<ChiMucGioHang, Long>{
+public interface CartDetailsRepository extends JpaRepository<CartDetails, Long>{
 	
-	ChiMucGioHang findBySanPhamAndGioHang(SanPham sp,GioHang g);
+	CartDetails findBySanPhamAndGioHang(Product sp,Cart g);
 	
-	List<ChiMucGioHang> findByGioHang(GioHang g);
+	List<CartDetails> findByGioHang(Cart g);
 }

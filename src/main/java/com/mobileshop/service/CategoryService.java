@@ -1,22 +1,22 @@
-package com.laptopshop.service;
+package com.mobileshop.service;
 
 import java.util.List;
 
 import org.springframework.data.domain.Page;
 
-import com.laptopshop.entities.DanhMuc;
+import com.mobileshop.entities.Category;
 
-public interface DanhMucService {
+public interface CategoryService {
 
-	Page<DanhMuc> getAllDanhMucForPageable(int page, int size);
+	Page<Category> getAllDanhMucForPageable(int page, int size);
 
-	List<DanhMuc> getAllDanhMuc();
+	List<Category> getAllDanhMuc();
 
-	DanhMuc getDanhMucById(long id);
+	Category getDanhMucById(long id);
 
-	DanhMuc save(DanhMuc d);
+	Category save(Category d);
 
-	DanhMuc update(DanhMuc d);
+	Category update(Category d);
 
 	void deleteById(long id);
 }

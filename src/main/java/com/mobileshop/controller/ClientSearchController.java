@@ -1,4 +1,4 @@
-package com.laptopshop.controller;
+package com.mobileshop.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,26 +13,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.laptopshop.dto.SearchSanPhamObject;
-import com.laptopshop.entities.SanPham;
-import com.laptopshop.service.SanPhamService;
+import com.mobileshop.dto.SearchProductObject;
+import com.mobileshop.entities.Product;
+import com.mobileshop.service.ProductService;
 
 @Controller
 public class ClientSearchController {
 	
 	@Autowired
-	private SanPhamService sanPhamService;
+	private ProductService sanPhamService;
 	
 	
 	@GetMapping("search")
 	public String searchSP(@RequestParam(defaultValue = "1") int page,@RequestParam String name,@RequestParam(defaultValue = "") String sort,@RequestParam(defaultValue = "") String range,@RequestParam(defaultValue = "") String brand,@RequestParam(defaultValue = "") String manufactor,Model model) {
-		SearchSanPhamObject obj = new SearchSanPhamObject();
+		SearchProductObject obj = new SearchProductObject();
 		obj.setKeyword(name.split(" "));
 		obj.setSort(sort);
 		obj.setDonGia(range);
 		obj.setBrand(brand);
 		obj.setManufactor(manufactor);
-		Page<SanPham> list = sanPhamService.getSanPhamByTenSanPham(obj,page,12);
+		Page<Product> list = sanPhamService.getSanPhamByTenSanPham(obj,page,12);
 		int totalPage = list.getTotalPages();
 		model.addAttribute("totalPage",totalPage);
 		model.addAttribute("list",list.getContent());
@@ -75,8 +75,8 @@ public class ClientSearchController {
 		//Lay cac danh muc va hang san xuat tim thay
 		Set<String> danhmuc = new HashSet<String>();
 		Set<String> hangsx = new HashSet<String>();
-		Iterable<SanPham> dum = sanPhamService.getSanPhamByTenSanPhamWithoutPaginate(obj);
-		for(SanPham sp: dum)
+		Iterable<Product> dum = sanPhamService.getSanPhamByTenSanPhamWithoutPaginate(obj);
+		for(Product sp: dum)
 		{
 			danhmuc.add(sp.getDanhMuc().getTenDanhMuc());
 			hangsx.add(sp.getHangSanXuat().getTenHangSanXuat());

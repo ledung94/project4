@@ -1,10 +1,8 @@
-package com.laptopshop.repository;
-
-import java.util.List;
+package com.mobileshop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.laptopshop.entities.ChiTietDonHang;
+import com.mobileshop.entities.OrderDetails;
 
-public interface ChiTietDonHangRepository extends JpaRepository<ChiTietDonHang, Long>{
+public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long>{
 }

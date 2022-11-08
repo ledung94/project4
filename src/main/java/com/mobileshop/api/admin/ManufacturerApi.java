@@ -1,4 +1,4 @@
-package com.laptopshop.api.admin;
+package com.mobileshop.api.admin;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -19,29 +19,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.laptopshop.entities.HangSanXuat;
-import com.laptopshop.entities.ResponseObject;
-import com.laptopshop.service.HangSanXuatService;
+import com.mobileshop.entities.Manufacturer;
+import com.mobileshop.entities.ResponseObject;
+import com.mobileshop.service.ManufacturerService;
 
 @RestController
 @RequestMapping("/api/nhan-hieu")
-public class HangSXApi {
+public class ManufacturerApi {
 
 	@Autowired
-	private HangSanXuatService service;
+	private ManufacturerService service;
 
 	@GetMapping("/all")
-	public Page<HangSanXuat> getAllHangSanXuat(@RequestParam(defaultValue = "1") int page) {
+	public Page<Manufacturer> getAllHangSanXuat(@RequestParam(defaultValue = "1") int page) {
 		return service.getALlHangSX(page-1,6);
 	}
 
 	@GetMapping("/{id}")
-	public HangSanXuat getHangSanXuatById(@PathVariable long id) {
+	public Manufacturer getHangSanXuatById(@PathVariable long id) {
 		return service.getHSXById(id);
 	}
 
 	@PostMapping(value = "/save")
-	public ResponseObject addHangSanXuat(@RequestBody @Valid HangSanXuat newHangSanXuat, BindingResult result) {
+	public ResponseObject addHangSanXuat(@RequestBody @Valid Manufacturer newHangSanXuat, BindingResult result) {
 
 		ResponseObject ro = new ResponseObject();
 
@@ -59,7 +59,7 @@ public class HangSXApi {
 	}
 
 	@PutMapping(value = "/update")
-	public ResponseObject updateHangSanXuat(@RequestBody @Valid HangSanXuat editHangSanXuat, BindingResult result) {
+	public ResponseObject updateHangSanXuat(@RequestBody @Valid Manufacturer editHangSanXuat, BindingResult result) {
 
 		ResponseObject ro = new ResponseObject();
 		if (result.hasErrors()) {

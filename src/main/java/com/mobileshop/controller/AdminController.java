@@ -1,4 +1,4 @@
-package com.laptopshop.controller;
+package com.mobileshop.controller;
 
 import java.util.HashSet;
 import java.util.List;
@@ -20,15 +20,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.laptopshop.dto.ListCongViecDTO;
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.VaiTro;
-import com.laptopshop.service.DanhMucService;
-import com.laptopshop.service.DonHangService;
-import com.laptopshop.service.HangSanXuatService;
-import com.laptopshop.service.LienHeService;
-import com.laptopshop.service.NguoiDungService;
-import com.laptopshop.service.VaiTroService;
+import com.mobileshop.dto.ListTaskDTO;
+import com.mobileshop.entities.User;
+import com.mobileshop.entities.Role;
+import com.mobileshop.service.CategoryService;
+import com.mobileshop.service.OrderService;
+import com.mobileshop.service.ManufacturerService;
+import com.mobileshop.service.ContactService;
+import com.mobileshop.service.UserService;
+import com.mobileshop.service.RoleService;
 
 @Controller
 @RequestMapping("/admin")
@@ -36,60 +36,60 @@ import com.laptopshop.service.VaiTroService;
 public class AdminController {
 
 	@Autowired
-	private DanhMucService danhMucService;
+	private CategoryService danhMucService;
 
 	@Autowired
-	private HangSanXuatService hangSXService;
+	private ManufacturerService hangSXService;
 
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private UserService nguoiDungService;
 
 	@Autowired
-	private VaiTroService vaiTroService;
+	private RoleService vaiTroService;
 	
 	@Autowired
-	private LienHeService lienHeService;
+	private ContactService lienHeService;
 
 	@Autowired
-	private DonHangService donHangService;
+	private OrderService donHangService;
 
 	@ModelAttribute("loggedInUser")
-	public NguoiDung loggedInUser() {
+	public User loggedInUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return nguoiDungService.findByEmail(auth.getName());
 	}
 
 	@GetMapping
 	public String adminPage(Model model) {
-		ListCongViecDTO listCongViec = new ListCongViecDTO();
+		ListTaskDTO listCongViec = new ListTaskDTO();
 		listCongViec.setSoDonHangMoi(donHangService.countByTrangThaiDonHang("Đang chờ giao"));
 		listCongViec.setSoDonhangChoDuyet(donHangService.countByTrangThaiDonHang("Chờ duyệt"));
 		listCongViec.setSoLienHeMoi(lienHeService.countByTrangThai("Đang chờ trả lời"));
 		
 		model.addAttribute("listCongViec", listCongViec);
-		return "admin/trangAdmin";
+		return "admin/index";
 	}
 
-	@GetMapping("/danh-muc")
+	@GetMapping("/category")
 	public String quanLyDanhMucPage() {
-		return "admin/quanLyDanhMuc";
+		return "admin/category";
 	}
 
-	@GetMapping("/nhan-hieu")
+	@GetMapping("/manufacturer")
 	public String quanLyNhanHieuPage() {
-		return "admin/quanLyNhanHieu";
+		return "admin/manufacturer";
 	}
 
-	@GetMapping("/lien-he")
+	@GetMapping("/contact")
 	public String quanLyLienHePage() {
-		return "admin/quanLyLienHe";
+		return "admin/contact";
 	}
 	
-	@GetMapping("/san-pham")
+	@GetMapping("/product")
 	public String quanLySanPhamPage(Model model) {
 		model.addAttribute("listNhanHieu", hangSXService.getALlHangSX());
 		model.addAttribute("listDanhMuc", danhMucService.getAllDanhMuc());
-		return "admin/quanLySanPham";
+		return "admin/product";
 	}
 
 	@GetMapping("/profile")
@@ -99,8 +99,8 @@ public class AdminController {
 	}
 
 	@PostMapping("/profile/update")
-	public String updateNguoiDung(@ModelAttribute NguoiDung nd, HttpServletRequest request) {
-		NguoiDung currentUser = getSessionUser(request);
+	public String updateNguoiDung(@ModelAttribute User nd, HttpServletRequest request) {
+		User currentUser = getSessionUser(request);
 		currentUser.setDiaChi(nd.getDiaChi());
 		currentUser.setHoTen(nd.getHoTen());
 		currentUser.setSoDienThoai(nd.getSoDienThoai());
@@ -108,32 +108,32 @@ public class AdminController {
 		return "redirect:/admin/profile";
 	}
 
-	@GetMapping("/don-hang")
+	@GetMapping("/order")
 	public String quanLyDonHangPage(Model model) {
-		Set<VaiTro> vaiTro = new HashSet<>();
+		Set<Role> vaiTro = new HashSet<>();
 		// lấy danh sách shipper
 		vaiTro.add(vaiTroService.findByTenVaiTro("ROLE_SHIPPER"));
-		List<NguoiDung> shippers = nguoiDungService.getNguoiDungByVaiTro(vaiTro);
-		for (NguoiDung shipper : shippers) {
+		List<User> shippers = nguoiDungService.getNguoiDungByVaiTro(vaiTro);
+		for (User shipper : shippers) {
 			shipper.setListDonHang(donHangService.findByTrangThaiDonHangAndShipper("Đang giao", shipper));
 		}
 		model.addAttribute("allShipper", shippers);
-		return "admin/quanLyDonHang";
+		return "admin/order";
 	}
 
-	@GetMapping("/tai-khoan")
+	@GetMapping("/account")
 	public String quanLyTaiKhoanPage(Model model) {
 	    model.addAttribute("listVaiTro", vaiTroService.findAllVaiTro());
-		return "admin/quanLyTaiKhoan";
+		return "admin/account";
 	}
 	
-	@GetMapping("/thong-ke")
+	@GetMapping("/report")
 	public String thongKePage(Model model) {
-		return "admin/thongKe";
+		return "admin/report";
 	}
 	
-	public NguoiDung getSessionUser(HttpServletRequest request) {
-		return (NguoiDung) request.getSession().getAttribute("loggedInUser");
+	public User getSessionUser(HttpServletRequest request) {
+		return (User) request.getSession().getAttribute("loggedInUser");
 	}
 	
 	

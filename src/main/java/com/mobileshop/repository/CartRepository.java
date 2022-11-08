@@ -1,13 +1,12 @@
-package com.laptopshop.repository;
+package com.mobileshop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
-import com.laptopshop.entities.GioHang;
-import com.laptopshop.entities.NguoiDung;
+import com.mobileshop.entities.Cart;
+import com.mobileshop.entities.User;
 
-public interface GioHangRepository extends JpaRepository<GioHang, Long>{
+public interface CartRepository extends JpaRepository<Cart, Long>{
 	
-	GioHang findByNguoiDung(NguoiDung n);
+	Cart findByNguoiDung(User n);
 	
 }

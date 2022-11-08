@@ -1,28 +1,28 @@
-package com.laptopshop.service.impl;
+package com.mobileshop.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.laptopshop.entities.VaiTro;
-import com.laptopshop.repository.VaiTroRepository;
-import com.laptopshop.service.VaiTroService;
+import com.mobileshop.entities.Role;
+import com.mobileshop.repository.RoleRepository;
+import com.mobileshop.service.RoleService;
 
 @Service
-public class VaiTroServiceImpl implements VaiTroService{
+public class RoleServiceImpl implements RoleService{
 	
 
 	@Autowired
-	private VaiTroRepository repo;
+	private RoleRepository repo;
 
 	@Override
-	public VaiTro findByTenVaiTro(String tenVaiTro) {
+	public Role findByTenVaiTro(String tenVaiTro) {
 		return repo.findByTenVaiTro(tenVaiTro);
 	}
 
 	@Override
-	public List<VaiTro> findAllVaiTro() {
+	public List<Role> findAllVaiTro() {
 		return repo.findAll();
 	}
 

@@ -1,9 +1,9 @@
-package com.laptopshop.dto;
+package com.mobileshop.dto;
 
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class SanPhamDto {
+public class ProductDTO {
 
 	private String id;
 

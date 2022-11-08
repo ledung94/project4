@@ -1,4 +1,4 @@
-package com.laptopshop.controller;
+package com.mobileshop.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,21 +13,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.service.NguoiDungService;
+import com.mobileshop.entities.User;
+import com.mobileshop.service.UserService;
 
 @Controller
 @RequestMapping("/shipper")
 @SessionAttributes("loggedInUser")
-public class ShipperController {
+public class DeliveryController {
 	
 	
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private UserService nguoiDungService;
 	
 
 	@ModelAttribute("loggedInUser")
-	public NguoiDung loggedInUser() {
+	public User loggedInUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return nguoiDungService.findByEmail(auth.getName());
 	}
@@ -46,8 +46,8 @@ public class ShipperController {
 	}
 	
 	@PostMapping("/profile/update")
-	public String updateNguoiDung(@ModelAttribute NguoiDung nd, HttpServletRequest request) {
-		NguoiDung currentUser = getSessionUser(request);
+	public String updateNguoiDung(@ModelAttribute User nd, HttpServletRequest request) {
+		User currentUser = getSessionUser(request);
 		currentUser.setDiaChi(nd.getDiaChi());
 		currentUser.setHoTen(nd.getHoTen());
 		currentUser.setSoDienThoai(nd.getSoDienThoai());
@@ -55,8 +55,8 @@ public class ShipperController {
 		return "redirect:/shipper/profile";
 	}
 	
-	public NguoiDung getSessionUser(HttpServletRequest request) {
-		return (NguoiDung) request.getSession().getAttribute("loggedInUser");
+	public User getSessionUser(HttpServletRequest request) {
+		return (User) request.getSession().getAttribute("loggedInUser");
 	}
 
 }

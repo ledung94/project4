@@ -1,11 +1,11 @@
-package com.laptopshop.service;
+package com.mobileshop.service;
 
 import java.util.List;
 
-import com.laptopshop.entities.VaiTro;
+import com.mobileshop.entities.Role;
 
-public interface VaiTroService {
+public interface RoleService {
 
-	VaiTro findByTenVaiTro(String tenVaiTro);
-	List<VaiTro> findAllVaiTro();
+	Role findByTenVaiTro(String tenVaiTro);
+	List<Role> findAllVaiTro();
 }

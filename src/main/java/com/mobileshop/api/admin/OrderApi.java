@@ -1,4 +1,4 @@
-package com.laptopshop.api.admin;
+package com.mobileshop.api.admin;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,38 +14,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.laptopshop.dto.SearchDonHangObject;
-import com.laptopshop.entities.ChiTietDonHang;
-import com.laptopshop.entities.DonHang;
-import com.laptopshop.entities.SanPham;
-import com.laptopshop.service.DonHangService;
-import com.laptopshop.service.NguoiDungService;
+import com.mobileshop.dto.SearchDonHangObject;
+import com.mobileshop.entities.OrderDetails;
+import com.mobileshop.entities.Order;
+import com.mobileshop.entities.Product;
+import com.mobileshop.service.OrderService;
+import com.mobileshop.service.UserService;
 
 @RestController
 @RequestMapping("/api/don-hang")
-public class DonHangApi {
+public class OrderApi {
 
 	@Autowired
-	private DonHangService donHangService;
+	private OrderService donHangService;
 
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private UserService nguoiDungService;
 
 	// lấy danh sách đơn hàng theo search object
 	@GetMapping("/all")
-	public Page<DonHang> getDonHangByFilter(@RequestParam(defaultValue = "1") int page, @RequestParam String trangThai,
+	public Page<Order> getDonHangByFilter(@RequestParam(defaultValue = "1") int page, @RequestParam String trangThai,
 			@RequestParam String tuNgay, @RequestParam String denNgay) throws ParseException {
 
 		SearchDonHangObject object = new SearchDonHangObject();
 		object.setDenNgay(denNgay);
 		object.setTrangThaiDon(trangThai);
 		object.setTuNgay(tuNgay);
-		Page<DonHang> listDonHang = donHangService.getAllDonHangByFilter(object, page);
+		Page<Order> listDonHang = donHangService.getAllDonHangByFilter(object, page);
 		return listDonHang;
 	}
 
 	@GetMapping("/{id}")
-	public DonHang getDonHangById(@PathVariable long id) {
+	public Order getDonHangById(@PathVariable long id) {
 		return donHangService.findById(id);
 	}
 
@@ -53,7 +53,7 @@ public class DonHangApi {
 	@PostMapping("/assign")
 	public void phanCongDonHang(@RequestParam("shipper") String emailShipper,
 			@RequestParam("donHangId") long donHangId) {
-		DonHang dh = donHangService.findById(donHangId);
+		Order dh = donHangService.findById(donHangId);
 		dh.setTrangThaiDonHang("Đang giao");
 		dh.setShipper(nguoiDungService.findByEmail(emailShipper));
 
@@ -74,10 +74,10 @@ public class DonHangApi {
 	@PostMapping("/update")
 	public void xacNhanHoanThanhDon(@RequestParam("donHangId") long donHangId,
 			@RequestParam("ghiChu") String ghiChuAdmin) {
-		DonHang dh = donHangService.findById(donHangId);
+		Order dh = donHangService.findById(donHangId);
 		
-		for(ChiTietDonHang ct : dh.getDanhSachChiTiet()) {
-			SanPham sp = ct.getSanPham();
+		for(OrderDetails ct : dh.getDanhSachChiTiet()) {
+			Product sp = ct.getSanPham();
 			sp.setDonViBan(sp.getDonViBan() + ct.getSoLuongNhanHang());
 			sp.setDonViKho(sp.getDonViKho() - ct.getSoLuongNhanHang() );
 		}
@@ -93,7 +93,7 @@ public class DonHangApi {
 	// xác nhận hoàn thành đơn hàng
 	@PostMapping("/cancel")
 	public void huyDonHangAdmin(@RequestParam("donHangId") long donHangId) {
-		DonHang dh = donHangService.findById(donHangId);
+		Order dh = donHangService.findById(donHangId);
 		dh.setTrangThaiDonHang("Đã bị hủy");
 		donHangService.save(dh);
 	}

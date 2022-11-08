@@ -1,32 +1,32 @@
-package com.laptopshop.service;
+package com.mobileshop.service;
 
 import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
 
-import com.laptopshop.dto.SearchDonHangObject;
-import com.laptopshop.entities.DonHang;
-import com.laptopshop.entities.NguoiDung;
+import com.mobileshop.dto.SearchDonHangObject;
+import com.mobileshop.entities.Order;
+import com.mobileshop.entities.User;
 
-public interface DonHangService {
+public interface OrderService {
 
-	Page<DonHang> getAllDonHangByFilter(SearchDonHangObject object, int page) throws ParseException;
+	Page<Order> getAllDonHangByFilter(SearchDonHangObject object, int page) throws ParseException;
 
-	DonHang update(DonHang dh);
+	Order update(Order dh);
 	
-	DonHang findById(long id);
+	Order findById(long id);
 	
-	Page<DonHang> findDonHangByShipper(SearchDonHangObject object, int page, int size, NguoiDung shipper) throws ParseException;
+	Page<Order> findDonHangByShipper(SearchDonHangObject object, int page, int size, User shipper) throws ParseException;
 
-	DonHang save(DonHang dh);
+	Order save(Order dh);
 	
 	List<Object> layDonHangTheoThangVaNam();
 
-	List<DonHang> findByTrangThaiDonHangAndShipper(String string, NguoiDung shipper);
+	List<Order> findByTrangThaiDonHangAndShipper(String string, User shipper);
 
 	
-	List<DonHang> getDonHangByNguoiDung(NguoiDung currentUser);
+	List<Order> getDonHangByNguoiDung(User currentUser);
 	
 	int countByTrangThaiDonHang(String trangThaiDonHang);
 }

@@ -1,6 +1,6 @@
-package com.laptopshop.dto;
+package com.mobileshop.dto;
 
-public class ListCongViecDTO {
+public class ListTaskDTO {
 
 	private int soDonHangMoi; // số đơn hàng mới
 	private int soLienHeMoi; // số liên hệ mới;

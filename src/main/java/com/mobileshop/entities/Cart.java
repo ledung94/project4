@@ -1,4 +1,4 @@
-package com.laptopshop.entities;
+package com.mobileshop.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class GioHang {
+public class Cart {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +18,7 @@ public class GioHang {
 	
 	@OneToOne
 	@JoinColumn(name = "ma_nguoi_dung")
-	private NguoiDung nguoiDung;
+	private User nguoiDung;
 
 	public long getId() {
 		return id;
@@ -36,11 +36,11 @@ public class GioHang {
 		this.tong_tien = tong_tien;
 	}
 
-	public NguoiDung getNguoiDung() {
+	public User getNguoiDung() {
 		return nguoiDung;
 	}
 
-	public void setNguoiDung(NguoiDung nguoiDung) {
+	public void setNguoiDung(User nguoiDung) {
 		this.nguoiDung = nguoiDung;
 	}
 	

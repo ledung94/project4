@@ -1,4 +1,4 @@
-package com.laptopshop.entities;
+package com.mobileshop.entities;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class HangSanXuat {
+public class Manufacturer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +23,7 @@ public class HangSanXuat {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "hangSanXuat")
-	private List<SanPham> listSanPham;
+	private List<Product> listSanPham;
 
 	public String getTenHangSanXuat() {
 		return tenHangSanXuat;
@@ -33,11 +33,11 @@ public class HangSanXuat {
 		this.tenHangSanXuat = tenHangSanXuat;
 	}
 
-	public List<SanPham> getListSanPham() {
+	public List<Product> getListSanPham() {
 		return listSanPham;
 	}
 
-	public void setListSanPham(List<SanPham> listSanPham) {
+	public void setListSanPham(List<Product> listSanPham) {
 		this.listSanPham = listSanPham;
 	}
 	

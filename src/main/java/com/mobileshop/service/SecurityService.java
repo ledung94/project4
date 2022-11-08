@@ -1,4 +1,4 @@
-package com.laptopshop.service;
+package com.mobileshop.service;
 
 public interface SecurityService {
 

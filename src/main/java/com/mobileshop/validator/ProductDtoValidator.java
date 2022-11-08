@@ -1,4 +1,4 @@
-package com.laptopshop.validator;
+package com.mobileshop.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -6,24 +6,24 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.laptopshop.dto.SanPhamDto;
-import com.laptopshop.service.DanhMucService;
+import com.mobileshop.dto.ProductDTO;
+import com.mobileshop.service.CategoryService;
 
 @Component
-public class SanPhamDtoValidator implements Validator{
+public class ProductDtoValidator implements Validator{
 	
 	@Autowired
-	private DanhMucService dmService;
+	private CategoryService dmService;
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return SanPhamDto.class.isAssignableFrom(clazz);
+		return ProductDTO.class.isAssignableFrom(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
 		
-		SanPhamDto s = (SanPhamDto) target;
+		ProductDTO s = (ProductDTO) target;
 		
 		ValidationUtils.rejectIfEmpty(errors, "tenSanPham", "error.tenSanPham", "Tên sản phẩm không được trống");
 		ValidationUtils.rejectIfEmpty(errors, "donGia", "error.donGia", "Đơn giá không được trống");

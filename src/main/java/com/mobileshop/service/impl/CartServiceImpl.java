@@ -1,27 +1,27 @@
-package com.laptopshop.service.impl;
+package com.mobileshop.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.laptopshop.entities.GioHang;
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.repository.GioHangRepository;
-import com.laptopshop.service.GioHangService;
+import com.mobileshop.entities.Cart;
+import com.mobileshop.entities.User;
+import com.mobileshop.repository.CartRepository;
+import com.mobileshop.service.CartService;
 
 @Service
-public class GioHangServiceImpl implements GioHangService{
+public class CartServiceImpl implements CartService{
 	
 	@Autowired
-	private GioHangRepository repo;
+	private CartRepository repo;
 	
 	@Override
-	public GioHang getGioHangByNguoiDung(NguoiDung n)
+	public Cart getGioHangByNguoiDung(User n)
 	{
 		return repo.findByNguoiDung(n);
 	}
 	
 	@Override
-	public GioHang save(GioHang g)
+	public Cart save(Cart g)
 	{
 		return repo.save(g);
 	}

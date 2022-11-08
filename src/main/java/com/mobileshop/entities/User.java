@@ -1,4 +1,4 @@
-package com.laptopshop.entities;
+package com.mobileshop.entities;
 
 import java.util.List;
 import java.util.Set;
@@ -15,7 +15,7 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class NguoiDung {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,17 +36,17 @@ public class NguoiDung {
 	@JoinTable(name="nguoidung_vaitro",
 	           joinColumns=@JoinColumn(name="ma_nguoi_dung"), 
 	           inverseJoinColumns=@JoinColumn(name="ma_vai_tro"))
-	private Set<VaiTro> vaiTro;
+	private Set<Role> vaiTro;
 	
 	@Transient
 	@JsonIgnore
-	private List<DonHang> listDonHang;
+	private List<Order> listDonHang;
 	
-	public List<DonHang> getListDonHang() {
+	public List<Order> getListDonHang() {
 		return listDonHang;
 	}
 
-	public void setListDonHang(List<DonHang> listDonHang) {
+	public void setListDonHang(List<Order> listDonHang) {
 		this.listDonHang = listDonHang;
 	}
 
@@ -98,11 +98,11 @@ public class NguoiDung {
 		this.diaChi = diaChi;
 	}
 
-	public Set<VaiTro> getVaiTro() {
+	public Set<Role> getVaiTro() {
 		return vaiTro;
 	}
 
-	public void setVaiTro(Set<VaiTro> vaiTro) {
+	public void setVaiTro(Set<Role> vaiTro) {
 		this.vaiTro = vaiTro;
 	}
 	
@@ -115,12 +115,12 @@ public class NguoiDung {
 		this.id = id;
 	}
 
-	public NguoiDung(String email, String password) {
+	public User(String email, String password) {
 		this.email = email;
 		this.password = password;
 	}
 	
-	public NguoiDung() {
+	public User() {
 		// TODO Auto-generated constructor stub
 	}
 	

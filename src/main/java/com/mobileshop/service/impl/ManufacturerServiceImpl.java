@@ -1,4 +1,4 @@
-package com.laptopshop.service.impl;
+package com.mobileshop.service.impl;
 
 import java.util.List;
 
@@ -7,33 +7,33 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.laptopshop.entities.HangSanXuat;
-import com.laptopshop.repository.HangSanXuatRepository;
-import com.laptopshop.service.HangSanXuatService;
+import com.mobileshop.entities.Manufacturer;
+import com.mobileshop.repository.ManufacturerRepository;
+import com.mobileshop.service.ManufacturerService;
 
 @Service
-public class HangSanXuatServiceImpl implements HangSanXuatService {
+public class ManufacturerServiceImpl implements ManufacturerService {
 
 	@Autowired
-	private HangSanXuatRepository repo;
+	private ManufacturerRepository repo;
 
 	@Override
-	public List<HangSanXuat> getALlHangSX() {
+	public List<Manufacturer> getALlHangSX() {
 		return repo.findAll();
 	}
 
 	@Override
-	public HangSanXuat getHSXById(long id) {
+	public Manufacturer getHSXById(long id) {
 		return repo.findById(id).get();
 	}
 
 	@Override
-	public HangSanXuat save(HangSanXuat h) {
+	public Manufacturer save(Manufacturer h) {
 		return repo.save(h);
 	}
 
 	@Override
-	public HangSanXuat update(HangSanXuat h) {
+	public Manufacturer update(Manufacturer h) {
 		return repo.save(h);
 	}
 
@@ -43,7 +43,7 @@ public class HangSanXuatServiceImpl implements HangSanXuatService {
 	}
 
 	@Override
-	public Page<HangSanXuat> getALlHangSX(int page, int size) {
+	public Page<Manufacturer> getALlHangSX(int page, int size) {
 		return repo.findAll(PageRequest.of(page, size));
 	}
 

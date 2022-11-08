@@ -1,4 +1,4 @@
-package com.laptopshop.config;
+package com.mobileshop.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;

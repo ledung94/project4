@@ -1,21 +1,21 @@
-package com.laptopshop.service;
+package com.mobileshop.service;
 
 import java.util.List;
 
-import com.laptopshop.entities.ChiMucGioHang;
-import com.laptopshop.entities.GioHang;
-import com.laptopshop.entities.SanPham;
+import com.mobileshop.entities.CartDetails;
+import com.mobileshop.entities.Cart;
+import com.mobileshop.entities.Product;
 
-public interface ChiMucGioHangService{
+public interface CartDetailsService{
 	
-	List<ChiMucGioHang> getChiMucGioHangByGioHang(GioHang g);
+	List<CartDetails> getChiMucGioHangByGioHang(Cart g);
 	
-	ChiMucGioHang getChiMucGioHangBySanPhamAndGioHang(SanPham sp,GioHang g);
+	CartDetails getChiMucGioHangBySanPhamAndGioHang(Product sp,Cart g);
 	
-	ChiMucGioHang saveChiMucGiohang(ChiMucGioHang c);
+	CartDetails saveChiMucGiohang(CartDetails c);
 	
-	void deleteChiMucGiohang(ChiMucGioHang c);
+	void deleteChiMucGiohang(CartDetails c);
 	
-	void deleteAllChiMucGiohang(List<ChiMucGioHang> c);
+	void deleteAllChiMucGiohang(List<CartDetails> c);
 	
 }

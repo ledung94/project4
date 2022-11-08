@@ -1,11 +1,11 @@
-package com.laptopshop.service;
+package com.mobileshop.service;
 
-import com.laptopshop.entities.GioHang;
-import com.laptopshop.entities.NguoiDung;
+import com.mobileshop.entities.Cart;
+import com.mobileshop.entities.User;
 
-public interface GioHangService {
+public interface CartService {
 	
-	GioHang getGioHangByNguoiDung(NguoiDung n);
+	Cart getGioHangByNguoiDung(User n);
 	
-	GioHang save(GioHang g);
+	Cart save(Cart g);
 }

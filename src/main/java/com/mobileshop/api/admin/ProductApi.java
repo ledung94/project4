@@ -1,4 +1,4 @@
-package com.laptopshop.api.admin;
+package com.mobileshop.api.admin;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -26,22 +26,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.laptopshop.dto.SanPhamDto;
-import com.laptopshop.dto.SearchSanPhamObject;
-import com.laptopshop.entities.ResponseObject;
-import com.laptopshop.entities.SanPham;
-import com.laptopshop.service.SanPhamService;
-import com.laptopshop.validator.SanPhamDtoValidator;
+import com.mobileshop.dto.ProductDTO;
+import com.mobileshop.dto.SearchProductObject;
+import com.mobileshop.entities.ResponseObject;
+import com.mobileshop.entities.Product;
+import com.mobileshop.service.ProductService;
+import com.mobileshop.validator.ProductDtoValidator;
 
 @RestController
 @RequestMapping("api/san-pham")
-public class SanPhamApi {
+public class ProductApi {
 
 	@Autowired
-	private SanPhamDtoValidator validator;
+	private ProductDtoValidator validator;
 
 	@Autowired
-	private SanPhamService sanPhamService;
+	private ProductService sanPhamService;
 
 	@InitBinder("sanPhamDto")
 	protected void initialiseBinder(WebDataBinder binder) {
@@ -50,39 +50,39 @@ public class SanPhamApi {
 
 	// lấy tất cả san phẩm theo tiêu chí, mặc địch lấy tất cả 
 	@GetMapping("/all")
-	public Page<SanPham> getAllSanPhamByFilter(@RequestParam(defaultValue = "1") int page, 
+	public Page<Product> getAllSanPhamByFilter(@RequestParam(defaultValue = "1") int page, 
 			 @RequestParam String danhMucId, @RequestParam String hangSXId, @RequestParam String donGia, @RequestParam String sapXepTheoGia) {
-		SearchSanPhamObject searchObject = new SearchSanPhamObject();
+		SearchProductObject searchObject = new SearchProductObject();
 		searchObject.setDanhMucId(danhMucId);
 		searchObject.setHangSXId(hangSXId);
 		searchObject.setDonGia(donGia);
 		searchObject.setSapXepTheoGia(sapXepTheoGia);
 		
-		Page<SanPham> listSanPham = sanPhamService.getAllSanPhamByFilter(searchObject, page-1, 10);
+		Page<Product> listSanPham = sanPhamService.getAllSanPhamByFilter(searchObject, page-1, 10);
 		return listSanPham;
 	}
 	
 	@GetMapping("/latest")
-	public List<SanPham> getLatestSanPham(){
+	public List<Product> getLatestSanPham(){
 		return sanPhamService.getLatestSanPham();
 	}
 
 	// lấy sản phẩm theo id
 	@GetMapping("/{id}")
-	public SanPham getSanPhamById(@PathVariable long id) {
+	public Product getSanPhamById(@PathVariable long id) {
 		return sanPhamService.getSanPhamById(id);
 	}
 	
 	
 	// lấy sản phẩm theo tên
 	@GetMapping("/")
-	public Page<SanPham> getSanPhamById(@RequestParam String tenSanPham, @RequestParam(defaultValue = "1") int page) {
+	public Page<Product> getSanPhamById(@RequestParam String tenSanPham, @RequestParam(defaultValue = "1") int page) {
 		return sanPhamService.getSanPhamByTenSanPhamForAdmin(tenSanPham, page-1, 10 );
 	}
 
 	// lưu sản phẩm vào db
 	@PostMapping(value = "/save")
-	public ResponseObject addSanPham(@ModelAttribute @Valid SanPhamDto newSanPhamDto, BindingResult result,
+	public ResponseObject addSanPham(@ModelAttribute @Valid ProductDTO newSanPhamDto, BindingResult result,
 			HttpServletRequest request) {
 
 		ResponseObject ro = new ResponseObject();
@@ -97,7 +97,7 @@ public class SanPhamApi {
 			errors = null;
 		} else {
 			// lưu sản phẩm
-			SanPham sp = sanPhamService.save(newSanPhamDto);
+			Product sp = sanPhamService.save(newSanPhamDto);
 			ro.setData(sp);
 			saveImageForProduct(sp, newSanPhamDto, request);
 			ro.setStatus("success");
@@ -114,7 +114,7 @@ public class SanPhamApi {
 
 	
 	// lưu ảnh của sản phẩm vào thư mục
-	public void saveImageForProduct(SanPham sp, SanPhamDto dto, HttpServletRequest request) {
+	public void saveImageForProduct(Product sp, ProductDTO dto, HttpServletRequest request) {
 
 		MultipartFile productImage = dto.getHinhAnh();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");

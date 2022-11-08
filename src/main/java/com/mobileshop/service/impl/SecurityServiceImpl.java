@@ -1,4 +1,4 @@
-package com.laptopshop.service.impl;
+package com.mobileshop.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import com.laptopshop.service.SecurityService;
+import com.mobileshop.service.SecurityService;
 
 @Service
 public class SecurityServiceImpl implements SecurityService {

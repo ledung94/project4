@@ -1,48 +1,48 @@
-package com.laptopshop.service.impl;
+package com.mobileshop.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.laptopshop.entities.ChiMucGioHang;
-import com.laptopshop.entities.GioHang;
-import com.laptopshop.entities.SanPham;
-import com.laptopshop.repository.ChiMucGioHangRepository;
-import com.laptopshop.service.ChiMucGioHangService;
+import com.mobileshop.entities.CartDetails;
+import com.mobileshop.entities.Cart;
+import com.mobileshop.entities.Product;
+import com.mobileshop.repository.CartDetailsRepository;
+import com.mobileshop.service.CartDetailsService;
 
 @Service
-public class ChiMucGioHangServiceImpl implements ChiMucGioHangService{
+public class CartDetailsServiceImpl implements CartDetailsService{
 	
 	@Autowired
-	private ChiMucGioHangRepository repo;
+	private CartDetailsRepository repo;
 	
 	@Override
-	public ChiMucGioHang getChiMucGioHangBySanPhamAndGioHang(SanPham sp,GioHang g)
+	public CartDetails getChiMucGioHangBySanPhamAndGioHang(Product sp,Cart g)
 	{
 		return repo.findBySanPhamAndGioHang(sp,g);
 	}
 	
 	@Override
-	public ChiMucGioHang saveChiMucGiohang(ChiMucGioHang c)
+	public CartDetails saveChiMucGiohang(CartDetails c)
 	{
 		return repo.save(c);
 	}
 	
 	@Override
-	public void deleteChiMucGiohang(ChiMucGioHang c)
+	public void deleteChiMucGiohang(CartDetails c)
 	{
 		repo.delete(c);
 	}
 	
 	@Override
-	public List<ChiMucGioHang> getChiMucGioHangByGioHang(GioHang g)
+	public List<CartDetails> getChiMucGioHangByGioHang(Cart g)
 	{
 		return repo.findByGioHang(g);
 	}
 	
 	@Override
-	public void deleteAllChiMucGiohang(List<ChiMucGioHang> c)
+	public void deleteAllChiMucGiohang(List<CartDetails> c)
 	{
 		repo.deleteAll(c);
 	}

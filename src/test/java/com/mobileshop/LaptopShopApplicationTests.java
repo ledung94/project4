@@ -1,4 +1,4 @@
-package com.laptopshop;
+package com.mobileshop;
 
 import java.util.HashSet;
 import java.util.List;
@@ -10,34 +10,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.laptopshop.entities.DanhMuc;
-import com.laptopshop.entities.DonHang;
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.VaiTro;
-import com.laptopshop.repository.DonHangRepository;
-import com.laptopshop.repository.NguoiDungRepository;
-import com.laptopshop.service.DanhMucService;
-import com.laptopshop.service.NguoiDungService;
-import com.laptopshop.service.SanPhamService;
+import com.mobileshop.entities.Category;
+import com.mobileshop.entities.Order;
+import com.mobileshop.entities.User;
+import com.mobileshop.entities.Role;
+import com.mobileshop.repository.OrderRepository;
+import com.mobileshop.repository.UserRepository;
+import com.mobileshop.service.CategoryService;
+import com.mobileshop.service.UserService;
+import com.mobileshop.service.ProductService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class LaptopShopApplicationTests {
 
 	@Autowired
-	private DanhMucService dmService;
+	private CategoryService dmService;
 
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private UserService nguoiDungService;
 
 	@Autowired
-	private NguoiDungRepository ndRepo;
+	private UserRepository ndRepo;
 
 	@Autowired
-	private DonHangRepository dhRepo;
+	private OrderRepository dhRepo;
 	
 	@Autowired
-	private SanPhamService spService;
+	private ProductService spService;
 
 
 //	@Test

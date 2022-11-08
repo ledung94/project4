@@ -1,4 +1,4 @@
-package com.laptopshop.validator;
+package com.mobileshop.validator;
 
 import java.util.regex.Pattern;
 
@@ -8,24 +8,24 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.service.NguoiDungService;
+import com.mobileshop.entities.User;
+import com.mobileshop.service.UserService;
 
 @Component
-public class NguoiDungValidator implements Validator {
+public class UserValidator implements Validator {
 
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private UserService nguoiDungService;
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return NguoiDung.class.equals(clazz);
+		return User.class.equals(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
 
-		NguoiDung user = (NguoiDung) target;
+		User user = (User) target;
 
 		ValidationUtils.rejectIfEmpty(errors, "email", "error.hoTen", "Họ tên không được bỏ trống");
 		ValidationUtils.rejectIfEmpty(errors, "soDienThoai", "error.soDienThoai", "Số điện thoại không được bỏ trống");

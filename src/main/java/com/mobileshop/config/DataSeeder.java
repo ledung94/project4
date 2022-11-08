@@ -1,4 +1,4 @@
-package com.laptopshop.config;
+package com.mobileshop.config;
 
 import java.util.HashSet;
 
@@ -8,19 +8,19 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.VaiTro;
-import com.laptopshop.repository.NguoiDungRepository;
-import com.laptopshop.repository.VaiTroRepository;
+import com.mobileshop.entities.User;
+import com.mobileshop.entities.Role;
+import com.mobileshop.repository.UserRepository;
+import com.mobileshop.repository.RoleRepository;
 
 @Component
 public class DataSeeder implements ApplicationListener<ContextRefreshedEvent> {
 
 	@Autowired
-	private NguoiDungRepository userRepository;
+	private UserRepository userRepository;
 
 	@Autowired
-	private VaiTroRepository roleRepository;
+	private RoleRepository roleRepository;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -29,25 +29,25 @@ public class DataSeeder implements ApplicationListener<ContextRefreshedEvent> {
 	public void onApplicationEvent(ContextRefreshedEvent arg0) {
 		// vai trof
 		if (roleRepository.findByTenVaiTro("ROLE_ADMIN") == null) {
-			roleRepository.save(new VaiTro("ROLE_ADMIN"));
+			roleRepository.save(new Role("ROLE_ADMIN"));
 		}
 
 		if (roleRepository.findByTenVaiTro("ROLE_MEMBER") == null) {
-			roleRepository.save(new VaiTro("ROLE_MEMBER"));
+			roleRepository.save(new Role("ROLE_MEMBER"));
 		}
 		
 		if (roleRepository.findByTenVaiTro("ROLE_SHIPPER") == null) {
-			roleRepository.save(new VaiTro("ROLE_SHIPPER"));
+			roleRepository.save(new Role("ROLE_SHIPPER"));
 		}
 
 		// Admin account
 		if (userRepository.findByEmail("admin@gmail.com") == null) {
-			NguoiDung admin = new NguoiDung();
+			User admin = new User();
 			admin.setEmail("admin@gmail.com");
 			admin.setPassword(passwordEncoder.encode("123456"));
 			admin.setHoTen("Nguyễn Xuân Nam");
 			admin.setSoDienThoai("123456789");
-			HashSet<VaiTro> roles = new HashSet<>();
+			HashSet<Role> roles = new HashSet<>();
 			roles.add(roleRepository.findByTenVaiTro("ROLE_ADMIN"));
 			roles.add(roleRepository.findByTenVaiTro("ROLE_MEMBER"));
 			admin.setVaiTro(roles);
@@ -56,10 +56,10 @@ public class DataSeeder implements ApplicationListener<ContextRefreshedEvent> {
 
 		// Member account
 		if (userRepository.findByEmail("member@gmail.com") == null) {
-			NguoiDung member = new NguoiDung();
+			User member = new User();
 			member.setEmail("member@gmail.com");
 			member.setPassword(passwordEncoder.encode("123456"));
-			HashSet<VaiTro> roles = new HashSet<>();
+			HashSet<Role> roles = new HashSet<>();
 			roles.add(roleRepository.findByTenVaiTro("ROLE_MEMBER"));
 			member.setVaiTro(roles);
 			userRepository.save(member);
@@ -67,10 +67,10 @@ public class DataSeeder implements ApplicationListener<ContextRefreshedEvent> {
 		
 		// Shipper account
 		if (userRepository.findByEmail("shipper@gmail.com") == null) {
-			NguoiDung member = new NguoiDung();
+			User member = new User();
 			member.setEmail("shipper@gmail.com");
 			member.setPassword(passwordEncoder.encode("123456"));
-			HashSet<VaiTro> roles = new HashSet<>();
+			HashSet<Role> roles = new HashSet<>();
 			roles.add(roleRepository.findByTenVaiTro("ROLE_SHIPPER"));
 			member.setVaiTro(roles);
 			userRepository.save(member);

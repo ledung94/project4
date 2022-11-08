@@ -1,37 +1,37 @@
-package com.laptopshop.service;
+package com.mobileshop.service;
 
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.domain.Page;
 
-import com.laptopshop.dto.SanPhamDto;
-import com.laptopshop.dto.SearchSanPhamObject;
-import com.laptopshop.entities.SanPham;
+import com.mobileshop.dto.ProductDTO;
+import com.mobileshop.dto.SearchProductObject;
+import com.mobileshop.entities.Product;
 
-public interface SanPhamService {
+public interface ProductService {
 
-	SanPham save(SanPhamDto sp);
+	Product save(ProductDTO sp);
 
-	SanPham update(SanPhamDto sp);
+	Product update(ProductDTO sp);
 
 	void deleteById(long id);
 
-	Page<SanPham> getAllSanPhamByFilter(SearchSanPhamObject object, int page, int limit);
+	Page<Product> getAllSanPhamByFilter(SearchProductObject object, int page, int limit);
 
-	SanPham getSanPhamById(long id);
+	Product getSanPhamById(long id);
 	
-	List<SanPham> getLatestSanPham();
+	List<Product> getLatestSanPham();
 	
-	Iterable<SanPham> getSanPhamByTenSanPhamWithoutPaginate(SearchSanPhamObject object);
+	Iterable<Product> getSanPhamByTenSanPhamWithoutPaginate(SearchProductObject object);
 	
-	Page<SanPham> getSanPhamByTenSanPham(SearchSanPhamObject object,int page, int resultPerPage);
+	Page<Product> getSanPhamByTenSanPham(SearchProductObject object,int page, int resultPerPage);
 	
-	List<SanPham> getAllSanPhamByList(Set<Long> idList);
+	List<Product> getAllSanPhamByList(Set<Long> idList);
 	
-	Page<SanPham> getSanPhamByTenSanPhamForAdmin(String tenSanPham, int page, int size);
+	Page<Product> getSanPhamByTenSanPhamForAdmin(String tenSanPham, int page, int size);
 	
-	Iterable<SanPham> getSanPhamByTenDanhMuc(String brand);
+	Iterable<Product> getSanPhamByTenDanhMuc(String brand);
 	
-	public Page<SanPham> getSanPhamByBrand(SearchSanPhamObject object, int page, int resultPerPage);
+	public Page<Product> getSanPhamByBrand(SearchProductObject object, int page, int resultPerPage);
 }

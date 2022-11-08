@@ -1,4 +1,4 @@
-package com.laptopshop.controller;
+package com.mobileshop.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,47 +17,46 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.laptopshop.entities.ChiMucGioHang;
-import com.laptopshop.entities.GioHang;
-import com.laptopshop.entities.NguoiDung;
-import com.laptopshop.entities.SanPham;
-import com.laptopshop.service.ChiMucGioHangService;
-import com.laptopshop.service.GioHangService;
-import com.laptopshop.service.NguoiDungService;
-import com.laptopshop.service.SanPhamService;
+import com.mobileshop.entities.CartDetails;
+import com.mobileshop.entities.Cart;
+import com.mobileshop.entities.User;
+import com.mobileshop.entities.Product;
+import com.mobileshop.service.CartDetailsService;
+import com.mobileshop.service.CartService;
+import com.mobileshop.service.UserService;
+import com.mobileshop.service.ProductService;
 
 @Controller
 @SessionAttributes("loggedInUser")
 public class CartController {
 	
 	@Autowired
-	private SanPhamService sanPhamService;
+	private ProductService sanPhamService;
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	private UserService nguoiDungService;
 	@Autowired
-	private GioHangService gioHangService;
+	private CartService gioHangService;
 	@Autowired
-	private ChiMucGioHangService chiMucGioHangService;
+	private CartDetailsService chiMucGioHangService;
 	
 	@ModelAttribute("loggedInUser")
-	public NguoiDung loggedInUser() {
+	public User loggedInUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return nguoiDungService.findByEmail(auth.getName());
 	}
 	
-	public NguoiDung getSessionUser(HttpServletRequest request) {
-		return (NguoiDung) request.getSession().getAttribute("loggedInUser");
+	public User getSessionUser(HttpServletRequest request) {
+		return (User) request.getSession().getAttribute("loggedInUser");
 	}
 	
 	@GetMapping("/cart")
 	public String cartPage(HttpServletRequest res,Model model) {
-		NguoiDung currentUser = getSessionUser(res);
+		User currentUser = getSessionUser(res);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Map<Long,String> quanity = new HashMap<Long,String>();
-		List<SanPham> listsp = new ArrayList<SanPham>();
+		List<Product> listsp = new ArrayList<Product>();
 		if(auth == null || auth.getPrincipal() == "anonymousUser")     //Lay tu cookie
 		{
 			Cookie cl[] = res.getCookies();		
@@ -74,11 +73,11 @@ public class CartController {
 			listsp = sanPhamService.getAllSanPhamByList(idList);
 		}else     //Lay tu database
 		{
-			GioHang g = gioHangService.getGioHangByNguoiDung(currentUser);
+			Cart g = gioHangService.getGioHangByNguoiDung(currentUser);
 			if(g != null)
 			{
-				List<ChiMucGioHang> listchimuc = chiMucGioHangService.getChiMucGioHangByGioHang(g);
-				for(ChiMucGioHang c: listchimuc)
+				List<CartDetails> listchimuc = chiMucGioHangService.getChiMucGioHangByGioHang(g);
+				for(CartDetails c: listchimuc)
 				{
 					listsp.add(c.getSanPham());
 					quanity.put(c.getSanPham().getId(), Integer.toString(c.getSo_luong()));

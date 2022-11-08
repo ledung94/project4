@@ -1,4 +1,4 @@
-package com.laptopshop.config;
+package com.mobileshop.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

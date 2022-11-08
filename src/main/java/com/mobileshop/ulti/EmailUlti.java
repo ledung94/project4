@@ -1,4 +1,4 @@
-package com.laptopshop.ulti;
+package com.mobileshop.ulti;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;

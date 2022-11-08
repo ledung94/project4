@@ -1,6 +1,6 @@
-package com.laptopshop.dto;
+package com.mobileshop.dto;
 
-public class SearchSanPhamObject {
+public class SearchProductObject {
 	private String danhMucId;
 	private String hangSXId;
 	private String donGia;
@@ -19,7 +19,7 @@ public class SearchSanPhamObject {
 	private String ram;
 	private String pin;
 
-	public SearchSanPhamObject() {
+	public SearchProductObject() {
 		danhMucId = "";
 		hangSXId = "";
 		donGia = "";

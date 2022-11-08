@@ -1,12 +1,12 @@
-package com.laptopshop.dto;
+package com.mobileshop.dto;
 
-public class SearchLienHeObject {
+public class SearchContactObject {
 
 	private String trangThaiLienHe;
 	private String tuNgay;
 	private String denNgay;
 	
-	public SearchLienHeObject() {
+	public SearchContactObject() {
 		trangThaiLienHe = "";
 		tuNgay = "";
 		denNgay = "";

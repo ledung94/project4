@@ -1,4 +1,4 @@
-package com.laptopshop.entities;
+package com.mobileshop.entities;
 
 import java.util.Set;
 
@@ -10,7 +10,7 @@ import javax.persistence.ManyToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class VaiTro {
+public class Role {
 
 	@Id
 	@GeneratedValue
@@ -20,7 +20,7 @@ public class VaiTro {
 
 	@JsonIgnore
 	@ManyToMany(mappedBy = "vaiTro")
-	private Set<NguoiDung> nguoiDung;
+	private Set<User> nguoiDung;
 
 	public String getTenVaiTro() {
 		return tenVaiTro;
@@ -30,19 +30,19 @@ public class VaiTro {
 		this.tenVaiTro = tenVaiTro;
 	}
 
-	public Set<NguoiDung> getNguoiDung() {
+	public Set<User> getNguoiDung() {
 		return nguoiDung;
 	}
 
-	public void setNguoiDung(Set<NguoiDung> nguoiDung) {
+	public void setNguoiDung(Set<User> nguoiDung) {
 		this.nguoiDung = nguoiDung;
 	}
 	
-	public VaiTro(String tenVaiTro) {
+	public Role(String tenVaiTro) {
 		this.tenVaiTro = tenVaiTro;
 	}
 	
-	public VaiTro() {
+	public Role() {
 		// TODO Auto-generated constructor stub
 	}
 }

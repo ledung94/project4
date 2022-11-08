@@ -1,4 +1,4 @@
-package com.laptopshop.entities;
+package com.mobileshop.entities;
 
 import java.util.Date;
 
@@ -14,7 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-public class LienHe {
+public class Contact {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,13 +38,13 @@ public class LienHe {
 	
 	@ManyToOne
 	@JoinColumn(name = "ma_nguoi_tra_loi")
-	private NguoiDung nguoiTraLoi;
+	private User nguoiTraLoi;
 
-	public NguoiDung getNguoiTraLoi() {
+	public User getNguoiTraLoi() {
 		return nguoiTraLoi;
 	}
 
-	public void setNguoiTraLoi(NguoiDung nguoiTraLoi) {
+	public void setNguoiTraLoi(User nguoiTraLoi) {
 		this.nguoiTraLoi = nguoiTraLoi;
 	}
 

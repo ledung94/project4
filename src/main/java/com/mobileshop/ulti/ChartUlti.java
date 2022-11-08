@@ -1,4 +1,4 @@
-package com.laptopshop.ulti;
+package com.mobileshop.ulti;
 
 public interface ChartUlti {
 

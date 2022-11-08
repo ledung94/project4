@@ -1,4 +1,4 @@
-package com.laptopshop.entities;
+package com.mobileshop.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class ChiTietDonHang {
+public class OrderDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,7 +19,7 @@ public class ChiTietDonHang {
 	
 	@OneToOne
 	@JoinColumn(name="ma_san_pham")
-	private SanPham sanPham;
+	private Product sanPham;
 	private long donGia;
 	private int soLuongDat;
 	
@@ -28,7 +28,7 @@ public class ChiTietDonHang {
 	@ManyToOne
 	@JoinColumn(name = "ma_don_hang")
 	@JsonIgnore
-	private DonHang donHang;
+	private Order donHang;
 
 	public long getId() {
 		return id;
@@ -38,11 +38,11 @@ public class ChiTietDonHang {
 		this.id = id;
 	}
 
-	public SanPham getSanPham() {
+	public Product getSanPham() {
 		return sanPham;
 	}
 
-	public void setSanPham(SanPham sanPham) {
+	public void setSanPham(Product sanPham) {
 		this.sanPham = sanPham;
 	}
 
@@ -62,11 +62,11 @@ public class ChiTietDonHang {
 		this.soLuongDat = soLuongDat;
 	}
 
-	public DonHang getDonHang() {
+	public Order getDonHang() {
 		return donHang;
 	}
 
-	public void setDonHang(DonHang donHang) {
+	public void setDonHang(Order donHang) {
 		this.donHang = donHang;
 	}
 	

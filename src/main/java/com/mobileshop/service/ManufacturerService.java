@@ -1,22 +1,22 @@
-package com.laptopshop.service;
+package com.mobileshop.service;
 
 import java.util.List;
 
 import org.springframework.data.domain.Page;
 
-import com.laptopshop.entities.HangSanXuat;
+import com.mobileshop.entities.Manufacturer;
 
-public interface HangSanXuatService {
+public interface ManufacturerService {
 
-	List<HangSanXuat> getALlHangSX();
+	List<Manufacturer> getALlHangSX();
 	
-	Page<HangSanXuat> getALlHangSX(int page, int size);
+	Page<Manufacturer> getALlHangSX(int page, int size);
 
-	HangSanXuat getHSXById(long id);
+	Manufacturer getHSXById(long id);
 
-	HangSanXuat save(HangSanXuat h);
+	Manufacturer save(Manufacturer h);
 
-	HangSanXuat update(HangSanXuat h);
+	Manufacturer update(Manufacturer h);
 
 	void deleteById(long id);
 }
