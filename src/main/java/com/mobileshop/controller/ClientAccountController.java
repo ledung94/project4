@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.common.collect.Lists;
 import com.mobileshop.dto.PasswordDTO;
-import com.mobileshop.entities.Order;
+import com.mobileshop.entities.Orders;
 import com.mobileshop.entities.User;
 import com.mobileshop.entities.ResponseObject;
 import com.mobileshop.service.OrderService;
@@ -57,7 +57,7 @@ public class ClientAccountController {
 	public String accountPage(HttpServletRequest res, Model model) {
 		User currentUser = getSessionUser(res);
 		model.addAttribute("user", currentUser);
-		List<Order> list = Lists.reverse(donHangService.getDonHangByNguoiDung(currentUser));
+		List<Orders> list = Lists.reverse(donHangService.getDonHangByNguoiDung(currentUser));
 		model.addAttribute("list",list);
 		return "client/account";
 	}

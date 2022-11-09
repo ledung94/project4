@@ -29,7 +29,7 @@ $(document).ready(function(){
 	function ajaxGet(){
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/mobileshop/api/danh-muc/all",
+			url: "http://localhost:8080/mobileshop/api/category/all",
 			success: function(result){
 				$.each(result, function(i, danhMuc){
 					var danhMucRow = '<tr>' +
@@ -72,7 +72,7 @@ $(document).ready(function(){
     		async:false,
 			type : "POST",
 			contentType : "application/json",
-			url : "http://localhost:8080/mobileshop/api/danh-muc/save",
+			url : "http://localhost:8080/mobileshop/api/category/save",
 			data : JSON.stringify(formData),
             // dataType : 'json',
 			success : function(response) {
@@ -102,7 +102,7 @@ $(document).ready(function(){
 		console.log(danhMucId);
 		$('#form').removeClass().addClass("updateForm");
 		$('#form #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateForm");
-		var href = "http://localhost:8080/mobileshop/api/danh-muc/"+danhMucId;
+		var href = "http://localhost:8080/mobileshop/api/category/"+danhMucId;
 		$.get(href, function(danhMuc, status) {
 			$('.updateForm #id').val(danhMuc.id);
 			$('.updateForm #tenDanhMuc').val(danhMuc.tenDanhMuc);
@@ -133,7 +133,7 @@ $(document).ready(function(){
     		async:false,
 			type : "PUT",
 			contentType : "application/json",
-			url : "http://localhost:8080/mobileshop/api/danh-muc/update",
+			url : "http://localhost:8080/mobileshop/api/category/update",
 			data : JSON.stringify(formData),
             // dataType : 'json',
 			success : function(response) {
@@ -165,7 +165,7 @@ $(document).ready(function(){
 		if(confirmation){
 		  $.ajax({
 			  type : "DELETE",
-			  url : "http://localhost:8080/mobileshop/api/danh-muc/delete/" + danhMucId,
+			  url : "http://localhost:8080/mobileshop/api/category/delete/" + danhMucId,
 			  success: function(resultMsg){
 				 workingObject.closest("tr").remove();
 				 alert("Xóa thành công");

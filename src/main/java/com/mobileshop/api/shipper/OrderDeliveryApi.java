@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mobileshop.dto.OrderUpdateShipper;
 import com.mobileshop.dto.SearchDonHangObject;
 import com.mobileshop.entities.OrderDetails;
-import com.mobileshop.entities.Order;
+import com.mobileshop.entities.Orders;
 import com.mobileshop.entities.User;
 import com.mobileshop.service.OrderService;
 import com.mobileshop.service.UserService;
 
 @RestController
-@RequestMapping("/api/shipper/don-hang")
+@RequestMapping("/api/shipper/order")
 public class OrderDeliveryApi {
 
 	@Autowired
@@ -33,7 +33,7 @@ public class OrderDeliveryApi {
 	private UserService nguoiDungService;
 
 	@GetMapping("/all")
-	public Page<Order> getDonHangByFilter(@RequestParam(defaultValue = "1") int page, @RequestParam String trangThai,
+	public Page<Orders> getDonHangByFilter(@RequestParam(defaultValue = "1") int page, @RequestParam String trangThai,
 			@RequestParam String tuNgay, @RequestParam String denNgay, @RequestParam long idShipper)
 			throws ParseException {
 
@@ -43,18 +43,18 @@ public class OrderDeliveryApi {
 		object.setTuNgay(tuNgay);
 
 		User shipper = nguoiDungService.findById(idShipper);
-		Page<Order> listDonHang = donHangService.findDonHangByShipper(object, page, 6, shipper);
+		Page<Orders> listDonHang = donHangService.findDonHangByShipper(object, page, 6, shipper);
 		return listDonHang;
 	}
 
 	@GetMapping("/{id}")
-	public Order getDonHangById(@PathVariable long id) {
+	public Orders getDonHangById(@PathVariable long id) {
 		return donHangService.findById(id);
 	}
 
 	@PostMapping("/update")
 	public void capNhatTrangThaiDonHang(@RequestBody OrderUpdateShipper capNhatDonHangShipper) {
-		Order donHang = donHangService.findById(capNhatDonHangShipper.getIdDonHang());
+		Orders donHang = donHangService.findById(capNhatDonHangShipper.getIdDonHang());
 
 		for (OrderDetails chiTiet : donHang.getDanhSachChiTiet()) {
 			for (OrderUpdateShipper.CapNhatChiTietDon chiTietCapNhat : capNhatDonHangShipper

@@ -33,7 +33,7 @@ public class DeliveryController {
 	}
 	
 	
-	@GetMapping(value= {"", "/don-hang"})
+	@GetMapping(value= {"", "/order"})
 	public String shipperPage(Model model) {
 		return "shipper/quanLyDonHang";
 	}

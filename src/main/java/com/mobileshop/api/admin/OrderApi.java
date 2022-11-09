@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mobileshop.dto.SearchDonHangObject;
 import com.mobileshop.entities.OrderDetails;
-import com.mobileshop.entities.Order;
+import com.mobileshop.entities.Orders;
 import com.mobileshop.entities.Product;
 import com.mobileshop.service.OrderService;
 import com.mobileshop.service.UserService;
 
 @RestController
-@RequestMapping("/api/don-hang")
+@RequestMapping("/api/order")
 public class OrderApi {
 
 	@Autowired
@@ -33,19 +33,19 @@ public class OrderApi {
 
 	// lấy danh sách đơn hàng theo search object
 	@GetMapping("/all")
-	public Page<Order> getDonHangByFilter(@RequestParam(defaultValue = "1") int page, @RequestParam String trangThai,
+	public Page<Orders> getDonHangByFilter(@RequestParam(defaultValue = "1") int page, @RequestParam String trangThai,
 			@RequestParam String tuNgay, @RequestParam String denNgay) throws ParseException {
 
 		SearchDonHangObject object = new SearchDonHangObject();
 		object.setDenNgay(denNgay);
 		object.setTrangThaiDon(trangThai);
 		object.setTuNgay(tuNgay);
-		Page<Order> listDonHang = donHangService.getAllDonHangByFilter(object, page);
+		Page<Orders> listDonHang = donHangService.getAllDonHangByFilter(object, page);
 		return listDonHang;
 	}
 
 	@GetMapping("/{id}")
-	public Order getDonHangById(@PathVariable long id) {
+	public Orders getDonHangById(@PathVariable long id) {
 		return donHangService.findById(id);
 	}
 
@@ -53,7 +53,7 @@ public class OrderApi {
 	@PostMapping("/assign")
 	public void phanCongDonHang(@RequestParam("shipper") String emailShipper,
 			@RequestParam("donHangId") long donHangId) {
-		Order dh = donHangService.findById(donHangId);
+		Orders dh = donHangService.findById(donHangId);
 		dh.setTrangThaiDonHang("Đang giao");
 		dh.setShipper(nguoiDungService.findByEmail(emailShipper));
 
@@ -74,7 +74,7 @@ public class OrderApi {
 	@PostMapping("/update")
 	public void xacNhanHoanThanhDon(@RequestParam("donHangId") long donHangId,
 			@RequestParam("ghiChu") String ghiChuAdmin) {
-		Order dh = donHangService.findById(donHangId);
+		Orders dh = donHangService.findById(donHangId);
 		
 		for(OrderDetails ct : dh.getDanhSachChiTiet()) {
 			Product sp = ct.getSanPham();
@@ -93,7 +93,7 @@ public class OrderApi {
 	// xác nhận hoàn thành đơn hàng
 	@PostMapping("/cancel")
 	public void huyDonHangAdmin(@RequestParam("donHangId") long donHangId) {
-		Order dh = donHangService.findById(donHangId);
+		Orders dh = donHangService.findById(donHangId);
 		dh.setTrangThaiDonHang("Đã bị hủy");
 		donHangService.save(dh);
 	}

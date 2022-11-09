@@ -3,7 +3,7 @@ function addToCart(id)
 	{
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/mobileshop/api/gio-hang/addSanPham?id="+id,
+			url: "http://localhost:8080/mobileshop/api/cart/addSanPham?id="+id,
 			success: function(result){
 				if(result.status == "false")
 				{
@@ -29,7 +29,7 @@ $(document).ready(function(){
 	function ajaxGet(){
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/mobileshop/api/san-pham/latest",
+			url: "http://localhost:8080/mobileshop/api/product/latest",
 			success: function(result){
 				var content;
 				var section = '<div class="section group">';

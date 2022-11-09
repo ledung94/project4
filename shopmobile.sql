@@ -64,7 +64,7 @@ CREATE TABLE `order_details` (
   KEY `FK9wl3houbukbxpixsut6uvojhy` (`ma_don_hang`),
   KEY `FK3ry84nmdxgoarx53qjxd671tk` (`ma_san_pham`),
   CONSTRAINT `FK3ry84nmdxgoarx53qjxd671tk` FOREIGN KEY (`ma_san_pham`) REFERENCES `product` (`id`),
-  CONSTRAINT `FK9wl3houbukbxpixsut6uvojhy` FOREIGN KEY (`ma_don_hang`) REFERENCES `order` (`id`)
+  CONSTRAINT `FK9wl3houbukbxpixsut6uvojhy` FOREIGN KEY (`ma_don_hang`) REFERENCES `orders` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -103,13 +103,13 @@ INSERT INTO `category` VALUES (1,'Laptop'),(2,'PC ĐỒNG BỘ & PC GAMING'),(3,
 UNLOCK TABLES;
 
 --
--- Table structure for table `order`
+-- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `dia_chi_nhan` varchar(255) DEFAULT NULL,
   `ghi_chu` varchar(255) DEFAULT NULL,
@@ -130,13 +130,13 @@ CREATE TABLE `order` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `order`
+-- Dumping data for table `orders`
 --
 
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (31,'bd','asdf','aaa','2018-12-01 14:38:26',NULL,NULL,'dsf','Đang chờ duyệt',NULL,NULL),(32,'fadf','asdf','aaa','2018-12-05 21:58:24',NULL,NULL,'13','created',2,NULL);
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (31,'bd','asdf','aaa','2018-12-01 14:38:26',NULL,NULL,'dsf','Đang chờ duyệt',NULL,NULL),(32,'fadf','asdf','aaa','2018-12-05 21:58:24',NULL,NULL,'13','created',2,NULL);
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -293,7 +293,7 @@ CREATE TABLE `product` (
   `he_dieu_hanh` varchar(255) DEFAULT NULL,
   `man_hinh` varchar(255) DEFAULT NULL,
   `ram` varchar(255) DEFAULT NULL,
-  `ten_product` varchar(255) DEFAULT NULL,
+  `ten_san_pham` varchar(255) DEFAULT NULL,
   `thiet_ke` varchar(255) DEFAULT NULL,
   `thong_tin_bao_hanh` varchar(255) DEFAULT NULL,
   `thong_tin_chung` varchar(255) DEFAULT NULL,

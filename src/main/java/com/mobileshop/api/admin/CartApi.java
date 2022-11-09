@@ -25,7 +25,7 @@ import com.mobileshop.service.UserService;
 import com.mobileshop.service.ProductService;
 
 @RestController
-@RequestMapping("api/gio-hang")
+@RequestMapping("api/cart")
 @SessionAttributes("loggedInUser")
 public class CartApi  {
 	

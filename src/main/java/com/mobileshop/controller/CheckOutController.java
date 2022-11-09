@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.mobileshop.entities.CartDetails;
 import com.mobileshop.entities.OrderDetails;
-import com.mobileshop.entities.Order;
+import com.mobileshop.entities.Orders;
 import com.mobileshop.entities.Cart;
 import com.mobileshop.entities.User;
 import com.mobileshop.entities.Product;
@@ -103,13 +103,13 @@ public class CheckOutController {
 		model.addAttribute("cart",listsp);
 		model.addAttribute("quanity",quanity);
 		model.addAttribute("user", currentUser);
-		model.addAttribute("donhang", new Order());
+		model.addAttribute("donhang", new Orders());
 		
 		return "client/checkout";
 	}
 	
 	@PostMapping(value="/thankyou")
-	public String thankyouPage(@ModelAttribute("donhang") Order donhang ,HttpServletRequest req,HttpServletResponse response ,Model model){
+	public String thankyouPage(@ModelAttribute("donhang") Orders donhang ,HttpServletRequest req,HttpServletResponse response ,Model model){
 		donhang.setNgayDatHang(new Date());
 		donhang.setTrangThaiDonHang("Đang chờ giao");
 
@@ -121,7 +121,7 @@ public class CheckOutController {
 	
 		if(auth == null || auth.getPrincipal() == "anonymousUser")     //Lay tu cookie
 		{
-			Order d = donHangService.save(donhang);
+			Orders d = donHangService.save(donhang);
 			Cookie cl[] = req.getCookies();		
 			Set<Long> idList = new HashSet<Long>();
 			for(int i=0; i< cl.length; i++)
@@ -145,7 +145,7 @@ public class CheckOutController {
 		}else     //Lay tu database
 		{
 			donhang.setNguoiDat(currentUser);
-			Order d = donHangService.save(donhang);
+			Orders d = donHangService.save(donhang);
 			Cart g = gioHangService.getGioHangByNguoiDung(currentUser);
 			List<CartDetails> listchimuc = chiMucGioHangService.getChiMucGioHangByGioHang(g);
 			for(CartDetails c: listchimuc)

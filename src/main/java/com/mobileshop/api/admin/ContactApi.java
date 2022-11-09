@@ -27,7 +27,7 @@ import com.mobileshop.service.ContactService;
 import com.mobileshop.ulti.EmailUlti;
 
 @RestController
-@RequestMapping("/api/lien-he")
+@RequestMapping("/api/contact")
 public class ContactApi {
 
 	@Autowired

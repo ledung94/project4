@@ -34,7 +34,7 @@ import com.mobileshop.service.ProductService;
 import com.mobileshop.validator.ProductDtoValidator;
 
 @RestController
-@RequestMapping("api/san-pham")
+@RequestMapping("api/product")
 public class ProductApi {
 
 	@Autowired

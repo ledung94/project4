@@ -31,7 +31,7 @@ import com.mobileshop.service.UserService;
 import com.mobileshop.service.RoleService;
 
 @RestController
-@RequestMapping("/api/tai-khoan")
+@RequestMapping("/api/account")
 public class AccountApi {
 
 	@Autowired

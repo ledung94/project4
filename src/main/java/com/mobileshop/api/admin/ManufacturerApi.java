@@ -24,7 +24,7 @@ import com.mobileshop.entities.ResponseObject;
 import com.mobileshop.service.ManufacturerService;
 
 @RestController
-@RequestMapping("/api/nhan-hieu")
+@RequestMapping("/api/manufacturer")
 public class ManufacturerApi {
 
 	@Autowired

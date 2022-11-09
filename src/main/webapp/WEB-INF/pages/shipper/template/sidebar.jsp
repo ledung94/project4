@@ -21,7 +21,7 @@
         <ul class="nav navbar-nav side-bar">       
          
           <li class="side-bar tmargin">
-            <a href="<c:url value='/shipper/don-hang' />">
+            <a href="<c:url value='/shipper/order' />">
               <span class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Quản lý đơn hàng</a>
           </li>
           

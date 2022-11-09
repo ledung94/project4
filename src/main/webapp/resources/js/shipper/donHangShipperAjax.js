@@ -9,7 +9,7 @@ $(document).ready(function() {
 			type: "GET",		
 			data: data,
 			contentType : "application/json",
-			url: "http://localhost:8080/mobileshop/api/shipper/don-hang/all" + '?page=' + page,
+			url: "http://localhost:8080/mobileshop/api/shipper/order/all" + '?page=' + page,
 			success: function(result){
 				$.each(result.content, function(i, donHang){
 					// tính giá trị đơn hàng
@@ -91,7 +91,7 @@ $(document).ready(function() {
 		if(donHangId != ''){
     	  $('.donHangTable tbody tr').remove();
     	  $('.pagination li').remove();
-		  var href = "http://localhost:8080/mobileshop/api/shipper/don-hang/"+donHangId;
+		  var href = "http://localhost:8080/mobileshop/api/shipper/order/"+donHangId;
 		  $.get(href, function(donHang) {
 				// tính giá trị đơn hàng
 			 var sum = 0;
@@ -132,7 +132,7 @@ $(document).ready(function() {
 		
 		var donHangId = $(this).parent().prev().children().val();	
 //		console.log(donHangId);
-		var href = "http://localhost:8080/mobileshop/api/shipper/don-hang/"+donHangId;
+		var href = "http://localhost:8080/mobileshop/api/shipper/order/"+donHangId;
 		$.get(href, function(donHang) {
 			$('#maDonHang').text("Mã đơn hàng: "+ donHang.id);
 			$('#hoTenNguoiNhan').text("Người nhận: "+ donHang.hoTenNguoiNhan);
@@ -206,7 +206,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		var donHangId = $(this).parent().prev().children().val();	
 		$("#donHangId").val(donHangId);
-		var href = "http://localhost:8080/mobileshop/api/shipper/don-hang/"+donHangId;
+		var href = "http://localhost:8080/mobileshop/api/shipper/order/"+donHangId;
 		$.get(href, function(donHang) {
 			// thêm bảng:
 			var stt = 1;
@@ -269,7 +269,7 @@ $(document).ready(function() {
      		async:false,
  			type : "POST",
  			contentType : "application/json",
- 			url : "http://localhost:8080/mobileshop/api/shipper/don-hang/update",
+ 			url : "http://localhost:8080/mobileshop/api/shipper/order/update",
  			enctype: 'multipart/form-data',
  	        
 			data : JSON.stringify(data),

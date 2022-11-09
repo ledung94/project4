@@ -27,7 +27,7 @@ import com.mobileshop.entities.ResponseObject;
 import com.mobileshop.service.CategoryService;
 
 @RestController
-@RequestMapping("api/danh-muc")
+@RequestMapping("api/category")
 public class CategoryApi {
 
 	@Autowired

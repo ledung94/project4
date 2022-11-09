@@ -9,7 +9,7 @@ $(document).ready(function() {
 			type: "GET",		
 			data: data,
 			contentType : "application/json",
-			url: "http://localhost:8080/mobileshop/api/don-hang/all" + '?page=' + page,
+			url: "http://localhost:8080/mobileshop/api/order/all" + '?page=' + page,
 			success: function(result){
 				$.each(result.content, function(i, donHang){
 					// tính giá trị đơn hàng
@@ -76,7 +76,7 @@ $(document).ready(function() {
      		async:false,
  			type : "POST",
  			contentType : "application/json",
- 			url : "http://localhost:8080/mobileshop/api/don-hang/update?shipper="+email+"&donHangId="+donHangId,
+ 			url : "http://localhost:8080/mobileshop/api/order/update?shipper="+email+"&donHangId="+donHangId,
  			enctype: 'multipart/form-data',
  	        
  			success : function(response) {
@@ -118,7 +118,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		
 		var donHangId = $(this).parent().prev().children().val();		
-		var href = "http://localhost:8080/mobileshop/api/don-hang/"+donHangId;
+		var href = "http://localhost:8080/mobileshop/api/order/"+donHangId;
 		$.get(href, function(donHang) {
 			$('#maDonHang').text("Mã đơn hàng: "+ donHang.id);
 			$('#hoTenNguoiNhan').text("Người nhận: "+ donHang.hoTenNguoiNhan);

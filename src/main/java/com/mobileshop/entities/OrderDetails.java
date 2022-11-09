@@ -28,7 +28,7 @@ public class OrderDetails {
 	@ManyToOne
 	@JoinColumn(name = "ma_don_hang")
 	@JsonIgnore
-	private Order donHang;
+	private Orders donHang;
 
 	public long getId() {
 		return id;
@@ -62,11 +62,11 @@ public class OrderDetails {
 		this.soLuongDat = soLuongDat;
 	}
 
-	public Order getDonHang() {
+	public Orders getDonHang() {
 		return donHang;
 	}
 
-	public void setDonHang(Order donHang) {
+	public void setDonHang(Orders donHang) {
 		this.donHang = donHang;
 	}
 	

@@ -28,7 +28,7 @@ $(document).ready(function(){
 	function ajaxGet(){
 		$.ajax({
 			type: "GET",		
-			url: "http://localhost:8080/mobileshop/api/nhan-hieu/all",
+			url: "http://localhost:8080/mobileshop/api/manufacturer/all",
 			success: function(result){
 				$.each(result, function(i, nhanHieu){
 					var nhanHieuRow = '<tr>' +
@@ -64,7 +64,7 @@ $(document).ready(function(){
     		async:false,
 			type : "POST",
 			contentType : "application/json",
-			url : "http://localhost:8080/mobileshop/api/nhan-hieu/save",
+			url : "http://localhost:8080/mobileshop/api/manufacturer/save",
 			data : JSON.stringify(formData),
             // dataType : 'json',
 			success : function(response) {
@@ -94,7 +94,7 @@ $(document).ready(function(){
 		
 		$('#form').removeClass().addClass("updateForm");
 		$('#form #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateForm");
-		var href = "http://localhost:8080/mobileshop/api/nhan-hieu/" + nhanHieuId;
+		var href = "http://localhost:8080/mobileshop/api/manufacturer/" + nhanHieuId;
 		$.get(href, function(nhanHieu, status) {
 			$('.updateForm #id').val(nhanHieu.id);
 			$('.updateForm #tenHangSanXuat').val(nhanHieu.tenHangSanXuat);
@@ -125,7 +125,7 @@ $(document).ready(function(){
     		async:false,
 			type : "PUT",
 			contentType : "application/json",
-			url : "http://localhost:8080/mobileshop/api/nhan-hieu/update",
+			url : "http://localhost:8080/mobileshop/api/manufacturer/update",
 			data : JSON.stringify(formData),
             // dataType : 'json',
 			success : function(response) {
@@ -157,7 +157,7 @@ $(document).ready(function(){
 		if(confirmation){
 		  $.ajax({
 			  type : "DELETE",
-			  url : "http://localhost:8080/mobileshop/api/nhan-hieu/delete/" + nhanHieuId,
+			  url : "http://localhost:8080/mobileshop/api/manufacturer/delete/" + nhanHieuId,
 			  success: function(resultMsg){
 				 workingObject.closest("tr").remove();
 				 alert("Xóa thành công");

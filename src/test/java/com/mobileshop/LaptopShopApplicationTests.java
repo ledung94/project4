@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mobileshop.entities.Category;
-import com.mobileshop.entities.Order;
+import com.mobileshop.entities.Orders;
 import com.mobileshop.entities.User;
 import com.mobileshop.entities.Role;
 import com.mobileshop.repository.OrderRepository;

@@ -20,7 +20,7 @@
 			type : "GET",
 			data : data,
 			contentType : "application/json",
-			url : "http://localhost:8080/mobileshop/api/don-hang/report",
+			url : "http://localhost:8080/mobileshop/api/order/report",
 			success : function(data) {
 				for (var i = 0; i < data.length; i++) {
 					label.push(data[i][0] + "/" + data[i][1]);

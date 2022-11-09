@@ -16,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-public class Order {
+public class Orders {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -158,7 +158,7 @@ public class Order {
 		this.hoTenNguoiNhan = hoTenNguoiNhan;
 	}
 
-	public Order() {
+	public Orders() {
 		// TODO Auto-generated constructor stub
 	}
 

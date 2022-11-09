@@ -33,20 +33,20 @@ public class User {
 	private String diaChi;
 	
 	@ManyToMany
-	@JoinTable(name="nguoidung_vaitro",
+	@JoinTable(name="user_role",
 	           joinColumns=@JoinColumn(name="ma_nguoi_dung"), 
 	           inverseJoinColumns=@JoinColumn(name="ma_vai_tro"))
 	private Set<Role> vaiTro;
 	
 	@Transient
 	@JsonIgnore
-	private List<Order> listDonHang;
+	private List<Orders> listDonHang;
 	
-	public List<Order> getListDonHang() {
+	public List<Orders> getListDonHang() {
 		return listDonHang;
 	}
 
-	public void setListDonHang(List<Order> listDonHang) {
+	public void setListDonHang(List<Orders> listDonHang) {
 		this.listDonHang = listDonHang;
 	}
 

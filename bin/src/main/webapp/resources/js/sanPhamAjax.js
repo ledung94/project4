@@ -12,7 +12,7 @@ $(document).ready(function() {
 			type: "GET",		
 			data: data,
 			contentType : "application/json",
-			url: "http://localhost:8080/mobileshop/api/san-pham/all" + '?page=' + page,
+			url: "http://localhost:8080/mobileshop/api/product/all" + '?page=' + page,
 			success: function(result){
 				$.each(result.content, function(i, sanPham){
 					var sanPhamRow = '<tr>' +
@@ -113,7 +113,7 @@ $(document).ready(function() {
      		async:false,
  			type : "POST",
  			contentType : "application/json",
- 			url : "http://localhost:8080/mobileshop/api/san-pham/save",
+ 			url : "http://localhost:8080/mobileshop/api/product/save",
  			enctype: 'multipart/form-data',
  			data : data,
  			
@@ -162,7 +162,7 @@ $(document).ready(function() {
      		async:false,
  			type : "POST",
  			contentType : "application/json",
- 			url : "http://localhost:8080/mobileshop/api/san-pham/save",
+ 			url : "http://localhost:8080/mobileshop/api/product/save",
  			enctype: 'multipart/form-data',
  			data : data,
  			
@@ -204,7 +204,7 @@ $(document).ready(function() {
 		$('#lapTopForm').removeClass().addClass("updateLaptopForm");
 		$('#lapTopForm #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateLaptopForm");
 	
-		var href = "http://localhost:8080/mobileshop/api/san-pham/"+sanPhamId;
+		var href = "http://localhost:8080/mobileshop/api/product/"+sanPhamId;
 		$.get(href, function(sanPham) {
 			populate('.updateLaptopForm', sanPham);
 			$("#idDanhMucLaptop").val(sanPham.danhMuc.id);
@@ -234,7 +234,7 @@ $(document).ready(function() {
  		async:false,
 			type : "POST",
 			contentType : "application/json",
-			url : "http://localhost:8080/mobileshop/api/san-pham/save",
+			url : "http://localhost:8080/mobileshop/api/product/save",
 			enctype: 'multipart/form-data',
 			data : data,
 			
@@ -273,7 +273,7 @@ $(document).ready(function() {
 		$('#otherForm').removeClass().addClass("updateOtherForm");
 		$('#otherForm #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateOtherForm");
 	
-		var href = "http://localhost:8080/mobileshop/api/san-pham/"+sanPhamId;
+		var href = "http://localhost:8080/mobileshop/api/product/"+sanPhamId;
 		$.get(href, function(sanPham) {
 			populate('.updateOtherForm', sanPham);
 			$("#idDanhMucKhac").val(sanPham.danhMuc.id);
@@ -300,7 +300,7 @@ $(document).ready(function() {
       		async:false,
   			type : "POST",
   			contentType : "application/json",
-  			url : "http://localhost:8080/mobileshop/api/san-pham/save",
+  			url : "http://localhost:8080/mobileshop/api/product/save",
   			enctype: 'multipart/form-data',
   			data : data,
   			
@@ -345,7 +345,7 @@ $(document).ready(function() {
 		  $.ajax({
 			  async:false,
 			  type : "DELETE",
-			  url : "http://localhost:8080/mobileshop/api/san-pham/delete/" + sanPhamId,
+			  url : "http://localhost:8080/mobileshop/api/product/delete/" + sanPhamId,
 			  success: function(resultMsg){
 				 alert("Xóa thành công");
 			  },
