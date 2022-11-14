@@ -92,8 +92,7 @@
 		<div class="wrap">
 			<!----start-logo---->
 			<div class="logo">
-				<a href="<%=request.getContextPath()%>/"><img
-					src="Frontend/img/logo3.png" title="logo" /></a>
+				<a class="logo-link" href="<%=request.getContextPath()%>/">MOBILE SHOP</a>
 			</div>
 			<!----end-logo---->
 			<!----start-top-nav---->

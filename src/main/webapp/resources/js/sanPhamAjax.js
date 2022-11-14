@@ -16,7 +16,7 @@ $(document).ready(function() {
 				$.each(result.content, function(i, sanPham){
 					var sanPhamRow = '<tr>' +
 					                  '<td>' + '<img src="/mobileshop/img/'+sanPham.id+'.png" class="img-responsive" style="height: 50px; width: 50px" />'+'</td>' +
-					                  '<td>' + sanPham.tenSanPham + '</td>' +
+					                  '<td style="width: 265px" class="product_name">' + sanPham.tenSanPham + '</td>' +
 					                  '<td>' + sanPham.danhMuc.tenDanhMuc + '</td>' +
 					                  '<td>' + sanPham.hangSanXuat.tenHangSanXuat + '</td>' +
 					                  '<td>' + sanPham.donGia + '</td>' +

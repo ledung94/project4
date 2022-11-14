@@ -1,0 +1,11 @@
+INSERT INTO online_store.manufacturer (id, ten_hang_san_xuat) VALUES (2, 'Apple');
+INSERT INTO online_store.manufacturer (id, ten_hang_san_xuat) VALUES (3, 'Samsung');
+INSERT INTO online_store.manufacturer (id, ten_hang_san_xuat) VALUES (4, 'Huewei');
+INSERT INTO online_store.manufacturer (id, ten_hang_san_xuat) VALUES (5, 'Xiaomi');
+INSERT INTO online_store.manufacturer (id, ten_hang_san_xuat) VALUES (6, 'Oppo');
+INSERT INTO online_store.manufacturer (id, ten_hang_san_xuat) VALUES (7, 'Vivo');
+INSERT INTO online_store.manufacturer (id, ten_hang_san_xuat) VALUES (8, 'Masstel');
+INSERT INTO online_store.manufacturer (id, ten_hang_san_xuat) VALUES (9, 'Nokia');
+INSERT INTO online_store.manufacturer (id, ten_hang_san_xuat) VALUES (10, 'Readmi');
+INSERT INTO online_store.manufacturer (id, ten_hang_san_xuat) VALUES (11, 'Phụ kiện foxcom');
+INSERT INTO online_store.manufacturer (id, ten_hang_san_xuat) VALUES (12, 'Media mart');

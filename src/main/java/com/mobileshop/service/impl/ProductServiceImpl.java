@@ -123,7 +123,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> getLatestSanPham() {
-		return sanPhamRepo.findFirst12ByDanhMucTenDanhMucContainingIgnoreCaseOrderByIdDesc("Laptop");
+		return sanPhamRepo.findFirst12ByDanhMucTenDanhMucContainingIgnoreCaseOrderByIdDesc("ĐIỆN THOẠI CAO CẤP");
 	}
 
 	public Iterable<Product> getSanPhamByTenSanPhamWithoutPaginate(SearchProductObject object) {
