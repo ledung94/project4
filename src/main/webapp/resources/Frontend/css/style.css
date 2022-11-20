@@ -93,18 +93,15 @@ img{max-width:100%;}
 	text-align: justify;
 	text-align: left;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+.logo-link{
+	font-size: 20px;
+	color: #0f0f0f;
+	line-height: 30px;
+}
+.logo-link:hover{
+	color: red;
+	text-decoration: none;
+}
 body{
 	background:#F9F9F9;
 }
@@ -385,6 +382,7 @@ body{
 	font-family: 'Open Sans', sans-serif;
 	font-weight : normal;
 	letter-spacing: -1px;
+	padding: 10px;
 }
 .images_1_of_4 a{
 		font-size:0.8em;
@@ -1647,5 +1645,4 @@ a#show_cart {
     font-size: 0.7125em;
 	padding: 6px 1px;
 }
-
 }

@@ -91,26 +91,26 @@
 		    	<c:if test = "${list.size() != 0}">
 		    		<div class="paging">
             		<c:if test = "${currentPage != 1}">
-                		<a href="/mobileshop/search?name=${name}&page=${currentPage-1}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">Back</a>
+                		<a class="btn btn-primary" href="/mobileshop/search?name=${name}&page=${currentPage-1}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">Back</a>
                 	</c:if>
                 	<c:if test = "${currentPage == 1}">	
-        				<a class="current">1</a>
+        				<a class="current btn btn-primary">1</a>
         			</c:if>
         			<c:if test = "${currentPage != 1}">	
-        				<a href="/mobileshop/search?name=${name}&page=1&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">1</a>
+        				<a class="btn btn-primary" href="/mobileshop/search?name=${name}&page=1&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">1</a>
         			</c:if>
         			
         			<c:forEach var="pag" items="${pageList}" varStatus="loop">
             			<c:if test = "${currentPage == pag}">	
-        					<a class="current">${pag}</a>
+        					<a class="current btn btn-primary">${pag}</a>
         				</c:if>
         				<c:if test = "${currentPage != pag}">	
-        					<a href="/mobileshop/search?name=${name}&page=${pag}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">${pag}</a>
+        					<a class="btn btn-primary" href="/mobileshop/search?name=${name}&page=${pag}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">${pag}</a>
         				</c:if>
       				</c:forEach>
 
             		<c:if test = "${currentPage != totalPage}">
-                		<a href="/mobileshop/search?name=${name}&page=${currentPage+1}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">Next</a>	
+                		<a class="btn btn-primary" href="/mobileshop/search?name=${name}&page=${currentPage+1}&sort=${sort}&range=${range}&brand=${brand}&manufactor=${manufactor}">Next</a>
                 	</c:if>
                 	
             
