@@ -57,7 +57,7 @@ DROP TABLE IF EXISTS `order_details`;
 CREATE TABLE `order_details` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `don_gia` bigint(20) NOT NULL,
-  `so_luong` int(11) NOT NULL,
+  -- `so_luong` int(11) NOT NULL,
   `ma_don_hang` bigint(20) DEFAULT NULL,
   `ma_san_pham` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -74,7 +74,7 @@ CREATE TABLE `order_details` (
 
 LOCK TABLES `order_details` WRITE;
 /*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
-INSERT INTO `order_details` VALUES (1,13980000,2,32,62),(2,25990000,1,32,57),(3,22490000,1,32,54);
+INSERT INTO `order_details` VALUES (1,13980000,32,62),(2,25990000,32,57),(3,22490000,32,54);
 /*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
