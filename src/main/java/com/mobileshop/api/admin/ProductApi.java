@@ -72,7 +72,12 @@ public class ProductApi {
 	public Product getSanPhamById(@PathVariable long id) {
 		return sanPhamService.getSanPhamById(id);
 	}
-	
+
+	// Search by name
+	@GetMapping("/search/{name}")
+	public Iterable<Product> searchSanPhamByName(@PathVariable String name) {
+		return sanPhamService.searchSanPhamByName(name);
+	}
 	
 	// lấy sản phẩm theo tên
 	@GetMapping("/")

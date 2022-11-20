@@ -23,6 +23,8 @@ public interface ProductService {
 	
 	List<Product> getLatestSanPham();
 	
+	Iterable<Product> searchSanPhamByName(String name);
+	
 	Iterable<Product> getSanPhamByTenSanPhamWithoutPaginate(SearchProductObject object);
 	
 	Page<Product> getSanPhamByTenSanPham(SearchProductObject object,int page, int resultPerPage);

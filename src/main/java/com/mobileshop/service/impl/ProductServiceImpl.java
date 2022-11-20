@@ -309,4 +309,11 @@ public class ProductServiceImpl implements ProductService {
 		return sanPhamRepo.findAll(builder, PageRequest.of(page - 1, resultPerPage));
 	}
 
+	@Override
+	public Iterable<Product> searchSanPhamByName(String tenSanPham) {
+		BooleanBuilder builder = new BooleanBuilder();
+		builder.and(QProduct.product.tenSanPham.like("%" + tenSanPham + "%"));
+		return sanPhamRepo.findAll(builder);
+	}
+
 }
