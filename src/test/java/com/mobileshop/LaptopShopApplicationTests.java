@@ -22,7 +22,7 @@ import com.mobileshop.service.ProductService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class LaptopShopApplicationTests {
+public class MobileShopApplicationTests {
 
 	@Autowired
 	private CategoryService dmService;

@@ -5,12 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.namchantran</groupId>
-	<artifactId>laptop-shop</artifactId>
+	<artifactId>Mobile-shop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>laptop-shop</name>
-	<description>a simple laptop shop online with spring boot</description>
+	<name>Mobile-shop</name>
+	<description>a simple Mobile shop online with spring boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

@@ -24,8 +24,8 @@ $(document).ready(function() {
 					                  '<td>' + sanPham.donViKho + '</td>' +
 					                  '<td width="0%">'+'<input type="hidden" id="sanPhamId" value=' + sanPham.id + '>'+ '</td>' + '<td>' ;
 					
-					var checkTenDanhMuc = (sanPham.danhMuc.tenDanhMuc.toLowerCase()).indexOf("Laptop".toLowerCase());
-					sanPhamRow += ( checkTenDanhMuc != -1)?'<button class="btn btn-primary btnCapNhatLapTop" >Cập nhật</button>':'<button class="btn btn-primary btnCapNhatOther" >Cập nhật</button>';
+					var checkTenDanhMuc = (sanPham.danhMuc.tenDanhMuc.toLowerCase()).indexOf("Mobile".toLowerCase());
+					sanPhamRow += ( checkTenDanhMuc != -1)?'<button class="btn btn-primary btnCapNhatMobile" >Cập nhật</button>':'<button class="btn btn-primary btnCapNhatOther" >Cập nhật</button>';
 					sanPhamRow += '   <button class="btn btn-danger btnXoaSanPham">Xóa</button></td>'+'</tr>';
 					$('.sanPhamTable tbody').append(sanPhamRow);
 				});
@@ -57,11 +57,11 @@ $(document).ready(function() {
 		var open = $(this).data("isopen");
 		if (open) {
 			var label = $('#danhMucDropdown option:selected').text();
-			if ((label.toLowerCase()).indexOf("Laptop".toLowerCase()) != -1) {
-				$('.lapTopModal').modal('show');
-				$("#idDanhMucLaptop").val($(this).val());
-				$('#lapTopForm').removeClass().addClass("addLapTopForm");
-				$('#lapTopForm #btnSubmit').removeClass().addClass("btn btn-primary btnSaveLapTopForm");
+			if ((label.toLowerCase()).indexOf("Mobile".toLowerCase()) != -1) {
+				$('.MobileModal').modal('show');
+				$("#idDanhMucMobile").val($(this).val());
+				$('#MobileForm').removeClass().addClass("addMobileForm");
+				$('#MobileForm #btnSubmit').removeClass().addClass("btn btn-primary btnSaveMobileForm");
 			} else {
 				$('.otherModal').modal('show');
 				$("#idDanhMucKhac").val($(this).val());
@@ -81,14 +81,14 @@ $(document).ready(function() {
     
     
 	// event khi ẩn modal form
-	$('.lapTopModal, .otherModal').on('hidden.bs.modal', function(e) {
+	$('.MobileModal, .otherModal').on('hidden.bs.modal', function(e) {
 		e.preventDefault();
-		$("#idDanhMucLaptop, #idDanhMucKhac").val("");
-		$("#idSanPhamLapTop, #idSanPhamKhac").val("");
+		$("#idDanhMucMobile, #idDanhMucKhac").val("");
+		$("#idSanPhamMobile, #idSanPhamKhac").val("");
 			
-	    $('#lapTopForm').removeClass().addClass("lapTopForm");
-		$('#lapTopForm #btnSubmit').removeClass().addClass("btn btn-primary");
-		$('#lapTopForm').trigger("reset");
+	    $('#MobileForm').removeClass().addClass("MobileForm");
+		$('#MobileForm #btnSubmit').removeClass().addClass("btn btn-primary");
+		$('#MobileForm').trigger("reset");
 		
 		$('#otherForm').removeClass().addClass("otherForm");
 		$('#otherForm #btnSubmit').removeClass().addClass("btn btn-primary");
@@ -96,16 +96,16 @@ $(document).ready(function() {
 		$('input, textarea').next().remove();
 	});
 	
-	// btn Save Form Laptop Event
-    $(document).on('click', '.btnSaveLapTopForm', function (event) {
+	// btn Save Form Mobile Event
+    $(document).on('click', '.btnSaveMobileForm', function (event) {
     	event.preventDefault();
-		ajaxPostLapTop();
+		ajaxPostMobile();
 		resetData();
     });
  
-    function ajaxPostLapTop() {
+    function ajaxPostMobile() {
     	// PREPATEE DATA
-    	 var form = $('.addLapTopForm')[0];   	 
+    	 var form = $('.addMobileForm')[0];   	 
     	 var data = new FormData(form);
     	 
     	 // do post
@@ -126,7 +126,7 @@ $(document).ready(function() {
  	        
  			success : function(response) {
  				if(response.status == "success"){
- 					$('.lapTopModal').modal('hide');
+ 					$('.MobileModal').modal('hide');
  					alert("Thêm thành công");
  				} else {
  			    	$('input, textarea').next().remove();
@@ -197,35 +197,35 @@ $(document).ready(function() {
     
     
     // click cập nhật button 
-    // vs danh mục laptop
-    $(document).on("click",".btnCapNhatLapTop", function(event){
+    // vs danh mục Mobile
+    $(document).on("click",".btnCapNhatMobile", function(event){
 		event.preventDefault();
 		var sanPhamId = $(this).parent().prev().children().val();	
-		$('#lapTopForm').removeClass().addClass("updateLaptopForm");
-		$('#lapTopForm #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateLaptopForm");
+		$('#MobileForm').removeClass().addClass("updateMobileForm");
+		$('#MobileForm #btnSubmit').removeClass().addClass("btn btn-primary btnUpdateMobileForm");
 	
 		var href = "http://localhost:8080/mobileshop/api/product/"+sanPhamId;
 		$.get(href, function(sanPham) {
-			populate('.updateLaptopForm', sanPham);
-			$("#idDanhMucLaptop").val(sanPham.danhMuc.id);
+			populate('.updateMobileForm', sanPham);
+			$("#idDanhMucMobile").val(sanPham.danhMuc.id);
 			var hangSXId = sanPham.hangSanXuat.id;
 			$("#nhaSXId").val(hangSXId);	
 		});
 		
 		removeElementsByClass("error");		
-		$('.updateLaptopForm .lapTopModal').modal();
+		$('.updateMobileForm .MobileModal').modal();
 	});
     
-	// btn update Laptop form Event
-    $(document).on('click', '.btnUpdateLaptopForm', function (event) {
+	// btn update Mobile form Event
+    $(document).on('click', '.btnUpdateMobileForm', function (event) {
     	event.preventDefault();
-		ajaxPutLapTop();
+		ajaxPutMobile();
 		resetData();
     });
  
-    function ajaxPutLapTop() {
+    function ajaxPutMobile() {
     	
-   	 var form = $('.updateLaptopForm')[0];   	 
+   	 var form = $('.updateMobileForm')[0];   	 
 	 var data = new FormData(form);
 	 console.log(data);
 	 
@@ -247,7 +247,7 @@ $(document).ready(function() {
 	        
 			success : function(response) {
 				if(response.status == "success"){
-					$('.lapTopModal').modal('hide');
+					$('.MobileModal').modal('hide');
 					alert("Cập nhật thành công");
 				} else {
 			    	$('input, textarea').next().remove();

@@ -149,7 +149,7 @@
 								</c:forEach>				
         					</select>
         				</div>
-        				<c:if test = "${brand == 'Laptop'}">
+        				<c:if test = "${brand == 'Mobile'}">
         				<p>Hệ điều hành</p>
         				<div class="select-range">
         					<select name="os" class="form-control">

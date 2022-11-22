@@ -34,7 +34,7 @@
 <div>
 <br>
 <div>
-	<h4 style="margin-left: 105px; display:inline"><b>LAPTOP GAMING - ĐỒ HOẠ</b></h4>
+	<h4 style="margin-left: 105px; display:inline"><b>Mobile GAMING - ĐỒ HOẠ</b></h4>
 	<h4 style="margin-left: 855px; display:inline"><a href="#">Xem tất cả</a></h4>
 </div>
 <br>
@@ -102,8 +102,8 @@
 		<div class="item">
 			<div class ="row">
 				<div class="col-xs-3">
-					<a href="#"><img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize"></a>
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<a href="#"><img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize"></a>
+				 	<div class="carousel-caption">Mobile Asus </div>
 				 	<h4>Giá: 16.000.000 đ</h4>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
@@ -112,8 +112,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<a href="#"><img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize"></a>
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<a href="#"><img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize"></a>
+				 	<div class="carousel-caption">Mobile Asus </div>
 				 	<h4>Giá: 16.000.000 đ</h4>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
@@ -122,8 +122,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<a href="#"><img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize"></a>
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<a href="#"><img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize"></a>
+				 	<div class="carousel-caption">Mobile Asus </div>
 				 	<h4>Giá: 16.000.000 đ</h4>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
@@ -132,8 +132,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<a href="#"><img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize"></a>
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<a href="#"><img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize"></a>
+				 	<div class="carousel-caption">Mobile Asus </div>
 				 	<h4>Giá: 16.000.000 đ</h4>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
@@ -167,7 +167,7 @@
 <div>
 <br>
 <div>
-<h4 style="margin-left: 105px; display:inline"><b>LAPTOP GIÁ RẺ</b></h4>
+<h4 style="margin-left: 105px; display:inline"><b>Mobile GIÁ RẺ</b></h4>
 <h4 style="margin-left: 945px; display:inline"><a href="#">Xem tất cả</a></h4>
 </div>
 
@@ -232,8 +232,8 @@
 		<div class="item">
 			<div class ="row">
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>
@@ -241,8 +241,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>
@@ -250,8 +250,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>
@@ -259,8 +259,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>
@@ -291,7 +291,7 @@
 <div>
 <br>
 <div>
-<h4 style="margin-left: 105px; display:inline"><b>LAPTOP SINH VIÊN - VĂN PHÒNG</b></h4>
+<h4 style="margin-left: 105px; display:inline"><b>Mobile SINH VIÊN - VĂN PHÒNG</b></h4>
 <h4 style="margin-left: 805px; display:inline"><a href="#">Xem tất cả</a></h4>
 </div>
 
@@ -356,8 +356,8 @@
 		<div class="item">
 			<div class ="row">
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>
@@ -365,8 +365,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>
@@ -374,8 +374,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>
@@ -383,8 +383,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>
@@ -415,7 +415,7 @@
 <div>
 <br>
 <div>
-<h4 style="margin-left: 105px; display:inline"><b>LAPTOP MỎNG NHẸ</b></h4>
+<h4 style="margin-left: 105px; display:inline"><b>Mobile MỎNG NHẸ</b></h4>
 <h4 style="margin-left: 905px; display:inline"><a href="#">Xem tất cả</a></h4>
 </div>
 
@@ -480,8 +480,8 @@
 		<div class="item">
 			<div class ="row">
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>
@@ -489,8 +489,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>
@@ -498,8 +498,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>
@@ -507,8 +507,8 @@
 					<h4>Nặng:</h4>
 				</div>
 				<div class="col-xs-3">
-					<img src="Frontend/img/laptop-asus.jpg" alt="not found img" class="img-reponsive img-resize">
-				 	<div class="carousel-caption">Laptop Asus </div>
+					<img src="Frontend/img/Mobile-asus.jpg" alt="not found img" class="img-reponsive img-resize">
+				 	<div class="carousel-caption">Mobile Asus </div>
 					<h4> Màn hình:</h4>
 					<h4>CPU:</h4>
 					<h4>RAM:</h4>

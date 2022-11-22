@@ -13,7 +13,7 @@
 			<br><br>
 			<p><b>1. LƯU Ý:</b></p><br>
 			<h3>- Sau khi bạn đặt hàng, trong vòng 12 giờ làm việc chúng tôi sẽ liên lạc lại để xác nhận và kiểm tra thông tin.</h3>
-			<h3>- Những rủi ro phát sinh trong quá trình vận chuyển (va đập, ẩm ướt, tai nạn..) có thể ảnh hưởng đến hàng hóa, vì thế xin Quý Khách vui lòng kiểm tra hàng hóa thật kỹ trước khi ký nhận. Máy tính Hà Nội sẽ không chịu trách nhiệm với những sai lệch hình thức của hàng hoá sau khi Quý khách đã ký nhận hàng.</h3>
+			<h3>- Những rủi ro phát sinh trong quá trình vận chuyển (va đập, ẩm ướt, tai nạn..) có thể ảnh hưởng đến hàng hóa, vì thế xin Quý Khách vui lòng kiểm tra hàng hóa thật kỹ trước khi ký nhận. Điện thoại Hà Nội sẽ không chịu trách nhiệm với những sai lệch hình thức của hàng hoá sau khi Quý khách đã ký nhận hàng.</h3>
 			<br>
 			<p><b>2. BẢNG GIÁ DỊCH VỤ VẨN CHUYỂN HÀNG HÓA</b></p>
 			<br>
@@ -55,14 +55,14 @@ Giao hàng bán kính 15km và thu phí 20.000đ /1 lần giao. Km16 tính 6000�
 						    <td>Từ km thứ 36 thu phí 6.000/km, giao hàng tối đa 45 km</td>
 					</tr>
 					<tr style="text-align: center;">
-						    <td> 10 bộ máy tính</td>
+						    <td> 10 bộ Điện thoại</td>
 						    <td>50km</td>
 						    <td> Theo thỏa thuận với khách hàng</td>
 						    <td>Từ km thứ 51 thu phí 10.000/km, giao hàng tối đa 150 km</td>
 					</tr>
 					
 						<tr style="text-align: center;">
-						    <td>11-20 bộ máy tính </td>
+						    <td>11-20 bộ Điện thoại </td>
 						    <td>100km</td>
 						    <td>Theo thỏa thuận với khách hàng </td>
 						    <td>Theo thỏa thuận với khách hàng</td>

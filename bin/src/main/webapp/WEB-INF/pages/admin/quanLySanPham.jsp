@@ -95,15 +95,15 @@
 	</div>
 
 	<div class="row col-md-6">
-		<form id="lapTopForm" class="lapTopForm">
-			<div class="modal fade lapTopModal" tabindex="-1" role="dialog"
+		<form id="MobileForm" class="MobileForm">
+			<div class="modal fade MobileModal" tabindex="-1" role="dialog"
 				data-keyboard="false" data-backdrop="static">
 				<div class="modal-dialog modal-lg" role="document"
 					style="width: 60%;">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="exampleModalLabel">Thêm mới/ Cập
-								nhật Laptop</h5>
+								nhật Mobile</h5>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
@@ -113,11 +113,11 @@
 							<div class="row">
 								<div>
 									<input type="hidden" class="form-control" name="danhMucId"
-										id="idDanhMucLaptop">
+										id="idDanhMucMobile">
 								</div>
 								<div>
 									<input type="hidden" class="form-control" name="id"
-										id="idSanPhamLapTop" readonly>
+										id="idSanPhamMobile" readonly>
 								</div>
 								<div class="form-group col-md-7">
 									<label for="inputPassword4">Tên sản phẩm</label> <input

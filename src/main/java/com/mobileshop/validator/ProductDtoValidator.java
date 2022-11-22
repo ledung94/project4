@@ -40,7 +40,7 @@ public class ProductDtoValidator implements Validator{
 		}
 		String tenDanhMuc = dmService.getDanhMucById(s.getDanhMucId()).getTenDanhMuc().toLowerCase();
 		
-		if(tenDanhMuc.contains("Laptop".toLowerCase())) {
+		if(tenDanhMuc.contains("Mobile".toLowerCase())) {
 			ValidationUtils.rejectIfEmpty(errors, "manHinh", "error.manHinh", "Màn hình không được trống");
 			ValidationUtils.rejectIfEmpty(errors, "heDieuHanh", "error.heDieuHanh", "Hệ điều hành không được trống");
 			ValidationUtils.rejectIfEmpty(errors, "cpu", "error.cpu", "CPU không được trống");

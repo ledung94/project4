@@ -151,7 +151,7 @@ public class ClientController {
 		for(Product sp: dum)
 		{
 			hangsx.add(sp.getHangSanXuat().getTenHangSanXuat());
-			if(brand.equals("Laptop"))
+			if(brand.equals("Mobile"))
 			{
 				pinSet.add(sp.getDungLuongPin());
 			}

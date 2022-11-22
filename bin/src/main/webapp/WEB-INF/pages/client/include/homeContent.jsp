@@ -6,9 +6,9 @@
 					<div class="image-slider">
 						<!-- Slideshow 1 -->
 					    <ul class="rslides" id="slider1">
-					      <li><img src="Frontend/img/laptop1.jpg" alt=""></li>
-					      <li><img src="Frontend/img/laptop2.png" alt=""></li>
-					      <li><img src="Frontend/img/laptop3.png" alt=""></li>
+					      <li><img src="Frontend/img/Mobile1.jpg" alt=""></li>
+					      <li><img src="Frontend/img/Mobile2.png" alt=""></li>
+					      <li><img src="Frontend/img/Mobile3.png" alt=""></li>
 					    </ul>
 						 <!-- Slideshow 2 -->
 					</div>
