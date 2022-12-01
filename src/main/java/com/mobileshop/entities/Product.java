@@ -31,6 +31,7 @@ public class Product {
 	private String ram;
 	private String thietKe;
 	private String dungLuongPin;
+	private long giaVon;
 	
 	@Transient
 	@JsonIgnore
@@ -55,9 +56,17 @@ public class Product {
 	public long getDonGia() {
 		return donGia;
 	}
+	
+	public long getGiaVon() {
+		return giaVon;
+	}
 
 	public void setDonGia(long donGia) {
 		this.donGia = donGia;
+	}
+	
+	public void setGiaVon(long giaVon) {
+		this.giaVon = giaVon;
 	}
 
 	public int getDonViKho() {

@@ -32,6 +32,9 @@ $(document).ready(function() {
             "<td>" +
             sanPham.donGia +
             "</td>" +
+             "<td>" +
+            sanPham.giaVon +
+            "</td>" +
             "<td>" +
             sanPham.donViKho +
             "</td>" +

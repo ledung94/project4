@@ -21,6 +21,7 @@ public class OrderDetails {
 	@JoinColumn(name="ma_san_pham")
 	private Product sanPham;
 	private long donGia;
+	private long giaVon;
 	private int soLuongDat;
 	
 	private int soLuongNhanHang;
@@ -49,9 +50,17 @@ public class OrderDetails {
 	public long getDonGia() {
 		return donGia;
 	}
+	
+	public long getGiaVon() {
+		return giaVon;
+	}
 
 	public void setDonGia(long donGia) {
 		this.donGia = donGia;
+	}
+	
+	public void setGiaVon(long giaVon) {
+		this.giaVon = giaVon;
 	}
 
 	public int getSoLuongDat() {

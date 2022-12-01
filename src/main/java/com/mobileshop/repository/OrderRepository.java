@@ -14,7 +14,7 @@ public interface OrderRepository extends JpaRepository<Orders, Long>, QuerydslPr
 	public List<Orders> findByTrangThaiDonHangAndShipper(String trangThai, User shipper);
 
 	@Query(value = "select DATE_FORMAT(dh.ngayNhanHang, '%m') as month, "
-			+ " DATE_FORMAT(dh.ngayNhanHang, '%Y') as year, sum(ct.soLuongNhanHang * ct.donGia) as total "
+			+ " DATE_FORMAT(dh.ngayNhanHang, '%Y') as year, sum(ct.soLuongNhanHang * ct.donGia) as total, sum(ct.soLuongNhanHang * ct.giaVon) as cost"
 			+ " from Orders dh, OrderDetails ct"
 			+ " where dh.id = ct.donHang.id and dh.trangThaiDonHang ='Hoàn thành'"
 			+ " group by DATE_FORMAT(dh.ngayNhanHang, '%Y%m')"

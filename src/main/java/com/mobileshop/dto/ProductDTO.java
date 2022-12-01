@@ -9,6 +9,7 @@ public class ProductDTO {
 
 	private String tenSanPham;
 	private String donGia;
+	private String giaVon;
 	private String donViKho;
 	private String thongTinBaoHanh;
 	private String thongTinChung;
@@ -51,9 +52,17 @@ public class ProductDTO {
 	public String getDonGia() {
 		return donGia;
 	}
+	
+	public String getGiaVon() {
+		return giaVon;
+	}
 
 	public void setDonGia(String donGia) {
 		this.donGia = donGia;
+	}
+	
+	public void setGiaVon(String giaVon) {
+		this.giaVon = giaVon;
 	}
 
 	public String getDonViKho() {

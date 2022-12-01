@@ -139,10 +139,11 @@ public class CheckOutController {
 				detailDH.setSanPham(sp);
 				detailDH.setSoLuongDat(Integer.parseInt(quanity.get(sp.getId())));
 				detailDH.setDonGia(Integer.parseInt(quanity.get(sp.getId()))*sp.getDonGia());
+				detailDH.setGiaVon(Integer.parseInt(quanity.get(sp.getId()))*sp.getGiaVon());
 				detailDH.setDonHang(d);
 				listDetailDH.add(detailDH);
 			}
-		}else     //Lay tu database
+		} else     //Lay tu database
 		{
 			donhang.setNguoiDat(currentUser);
 			Orders d = donHangService.save(donhang);
@@ -152,7 +153,8 @@ public class CheckOutController {
 			{			
 				OrderDetails detailDH = new OrderDetails();
 				detailDH.setSanPham(c.getSanPham());
-				detailDH.setDonGia(c.getSo_luong()*c.getSanPham().getDonGia());	
+				detailDH.setDonGia(c.getSo_luong()*c.getSanPham().getDonGia());
+				detailDH.setGiaVon(c.getSo_luong()*c.getSanPham().getGiaVon());	
 				detailDH.setSoLuongDat(c.getSo_luong());
 				detailDH.setDonHang(d);
 				listDetailDH.add(detailDH);		

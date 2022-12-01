@@ -43,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
 		sanPham.setDanhMuc(danhMucRepo.findById(dto.getDanhMucId()).get());
 		sanPham.setHangSanXuat(hangSanXuatRepo.findById(dto.getNhaSXId()).get());
 		sanPham.setDonGia(Long.parseLong(dto.getDonGia()));
+		sanPham.setGiaVon(Long.parseLong(dto.getGiaVon()));
 		sanPham.setThietKe(dto.getThietKe());
 		sanPham.setThongTinBaoHanh(dto.getThongTinBaoHanh());
 		sanPham.setThongTinChung(dto.getThongTinChung());

@@ -75,7 +75,7 @@
 		<hr />
 
 		<div class="form-group form-inline"
-			style="float: right; margin-right: 10px; top: -33px; position: relative;">
+			style="float: right; margin-right: 10px; top: -33px;">
 			<input class="form-control" type="text" id="searchByName"
 				placeholder="Nhập tên để tìm nhanh"> <span
 				class="glyphicon glyphicon-search" aria-hidden="true"
@@ -90,6 +90,7 @@
 					<th>Danh Mục</th>
 					<th>Hãng sản xuất</th>
 					<th>Đơn giá</th>
+					<th>Giá vốn</th>
 					<th>Số lượng</th>
 				</tr>
 			</thead>
@@ -266,6 +267,11 @@
 									<label for="inputPassword4">Đơn giá</label> <input
 										type="number" class="form-control" name="donGia" min="0"
 										value="0" id="donGiaKhac">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="inputPassword4">Giá vốn</label> <input
+										type="number" class="form-control" name="giaVon" min="0"
+										value="0" id="giaVonKhac">
 								</div>
 							</div>
 

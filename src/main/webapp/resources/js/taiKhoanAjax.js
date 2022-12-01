@@ -54,13 +54,15 @@ $(document).ready(function() {
 	};
 	
 	// event khi click vào dropdown chọn danh mục thêm sản phẩm
-	$('#vaiTro').mouseup(function() {
-		var open = $(this).data("isopen");
-		if (open) {
-			resetData();
-		}
-		$(this).data("isopen", !open);
-	});
+	// $('#vaiTro').mouseup(function() {
+	// 	var open = $(this).data("isopen");
+	// 	if (open) {
+	// 		resetData();
+	// 	}
+	// 	$(this).data("isopen", !open);
+	// });
+
+	$(document).on('change', '#vaiTro', () => resetData())
 	
 	// click thêm tài khoản
     $(document).on('click', '.btnThemTaiKhoan', function (event) {
